@@ -1,0 +1,107 @@
+<section id="habilidades">
+    <div class="skills">
+        <div class="container" data-aos="zoom-in-right" data-aos-duration="500">
+            <h1 class="titulo">Mis habilidades</h1>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn btn-success zoom-in" (click)="open(addSkillModal)"><i
+                        class="bi bi-plus-circle"></i>&nbsp;&nbsp;Agregar
+                    habilidad</button>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-sm-12" *ngFor="let skill of skillsInfoArray">
+                    <div class="card">
+                        <h2 class="card-details">
+                            <img src="../../../assets/images/logo-cl.png" class="card-img" alt="Imagen">{{skill.nombre}}
+                        </h2>
+                        <mat-progress-bar mode="determinate" class="bar" value="{{skill.porcentaje}}">
+                        </mat-progress-bar>
+                    </div>
+                </div>
+            </div>
+            <div class="divider mb-4"></div>
+            <div class="row">
+                <div class="col-lg-6 col-sm-12" *ngFor="let language of languageInfoArray">
+                    <div class="card card-language">
+                        <h2 class="card-details">
+                            <img src="../../../assets/images/logo-cl.png" class="card-img"
+                                alt="Imagen">{{language.nombre}}
+                        </h2>
+                        <mat-progress-bar mode="determinate" class="bar" value="{{language.porcentaje}}">
+                        </mat-progress-bar>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal para Agregar habilidad  -->
+<ng-template #addSkillModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title"><i class="bi bi-plus-circle"></i> Agregar nueva habilidad
+        </h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="mb-3">
+                <div class="form-floating mb-3">
+                    <input type="text" name="titulo" id="titulo" [(ngModel)]="addSkill.nombre"
+                        class="form-control rounded-3" id="floatingInput" placeholder="Coloca el título">
+                    <label for="floatingInput" *ngIf="addSkill.esidioma == false">Habilidad</label>
+                    <label for="floatingInput" *ngIf="addSkill.esidioma == true">Idioma</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="porcentaje" id="porcentaje" class="form-control rounded-3"
+                        id="floatingInput" [(ngModel)]="addSkill.porcentaje" placeholder="Coloca el usuario">
+                    <label for="floatingInput">Porcentaje</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" (change)="esIdioma($event)" type="checkbox" role="switch"
+                        id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Es un idioma</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="guardar(addSkill)"><i
+                class="bi bi-plus-circle"></i>&nbsp;&nbsp;Agregar</button>
+    </div>
+</ng-template>
+
+<!-- Modal para Editar habilidad  -->
+<ng-template #editSkill let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title"><i class="bi bi-pencil"></i> Editar habilidad</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="mb-3">
+                <div class="form-floating mb-3">
+                    <input type="text" name="titulo" id="titulo" class="form-control rounded-3" id="floatingInput"
+                        [(ngModel)]="addSkill.nombre" placeholder="Coloca el título">
+                    <label for="floatingInput" *ngIf="addSkill.esidioma == false">Habilidad</label>
+                    <label for="floatingInput" *ngIf="addSkill.esidioma == true">Idioma</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="fechainicio" id="fechainicio" class="form-control rounded-3"
+                        id="floatingInput" [(ngModel)]="addSkill.porcentaje" placeholder="Coloca el usuario">
+                    <label for="floatingInput">Porcentaje</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" [(ngModel)]="addSkill.esidioma"
+                        id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Es un idioma</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="editar(addSkill)"><i
+                class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</button>
+    </div>
+
+</ng-template>

@@ -1,0 +1,118 @@
+h1, h2, h3, h4, h5, h6 { 
+  font-family: 'Poppins', sans-serif;
+}
+.projects{
+  background-color: var(--secondary-color);
+    padding-top: 5%;
+}
+
+.titulo {
+  text-align: center;
+  font-size: 40px;
+}
+.boton-editar {
+  position: absolute;
+  left: 90%;
+  border-radius: 50%;
+}
+.boton-eliminar {
+  position: absolute;
+  left: 82%;
+  border-radius: 50%;
+}
+.timeline-container {
+    font-family: 'Poppins', sans-serif;
+    max-width: 500px;
+    margin: 0 auto;
+    border-left: 4px solid #e6e4e9;
+    padding-left: 25px;
+    margin-left: 50px;
+    border-radius: 8px;
+  }
+
+.timeline-content {
+    padding-top: 20px;
+    text-align: justify;
+}
+  .timeline-container h2 {
+    font-size: 26px;
+    margin: 0;
+    color: #e6e4e9;
+  }
+  
+  .timeline-container .event {
+    background-color: var(--card-color);
+    padding: 32px;
+    margin: 48px 0;
+    line-height: 2;
+    cursor: pointer;
+    position: relative;
+    transition: all 500ms;
+    border-radius: 8px;
+  }
+
+  .timeline-container .event::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    border: 2px solid #e6e4e9;
+    position: absolute;
+    left: -34px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #e6e4e9;
+    transition: all 500ms;
+  }
+  
+  .timeline-container .event:hover::before {
+    background: rgb(90, 134, 255);
+  }
+  
+  .timeline-container .event .event-date {
+    position: absolute;
+    left: -130px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    text-align: center;
+    color: #e6e6e6;
+  }
+  .timeline-container .event .timeline-img {
+    position: absolute;
+    left: 530px;
+    top: 25%;
+    height: 100px;
+  }
+  .icon-display {
+    top: 10px;
+ }
+  .btn-timeline {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+  }
+  @media (max-width: 700px) {
+    .timeline-container {
+      max-width: 100%;
+      margin-left: 8px;
+    }
+    h1 {
+        padding-top: 10px;
+    }
+    .timeline-container .event .event-date {
+      position: static;
+      margin-bottom: -20px;
+    }
+    .timeline-container .event .timeline-img {
+      position: static;
+      height: 70px;
+      margin-left: 40%;
+      padding-bottom: 10px;
+    }
+  }
+  @media (min-width: 700px) {
+    .col-lg-6 {
+        margin-left: 10%;
+    }
+}   

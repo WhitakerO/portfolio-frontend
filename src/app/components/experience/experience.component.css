@@ -1,0 +1,69 @@
+h1, h2, h3, h4, h5, h6 { 
+    font-family: 'Poppins', sans-serif;
+}
+.experience {
+    background-color: var(--secondary-color);
+    padding-top: 5%;
+    padding-bottom: 45px;
+}
+.invis { 
+    display:none;
+}
+.titulo {
+    text-align: center;
+    padding-bottom: 3%;
+    font-size: 40px;
+}
+.image-card {
+    margin-top: 20px;
+    padding: 10px;
+    width: 150px;
+}
+.boton-editar {
+    position: absolute;
+    top: 20px;
+    left: 94%;
+    border-radius: 50%;
+}
+.boton-eliminar {
+    position: absolute;
+    top: 20px;
+    left: 90%;
+    border-radius: 50%;
+}
+.card {
+    margin-left: 12%;
+    display: flex;
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+
+.add-btn {
+    align-content: right;
+}
+.descripcion {
+    margin-left: -30px;
+}
+.tarjeta {
+    margin-top: 10px;
+    background-color: var(--card-color);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 8px;
+    transition: transform .5s ease-in-out;
+}
+.tarjeta:hover {
+    transform: scale(1.03);
+}
+@media (max-width: 700px) {
+    .tarjeta {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .descripcion {
+        padding: 50px;
+        margin-left: 0px;
+        text-align: justify;
+    }
+
+}

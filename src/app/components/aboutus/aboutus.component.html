@@ -1,0 +1,160 @@
+<div class="acercade">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-3 info-personal">
+                <div class="img-avatar">
+                    <img *ngIf="aboutInfo.avatarimg != ''" src="{{aboutInfo.avatarimg}}" data-aos="fade-up"
+                        class="avatar" alt="Avatar">
+                </div>
+                <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
+                    <h2 class="pt-2">
+                        <span>{{aboutInfo.name}}</span>
+                    </h2>
+                    <h3>
+                        {{aboutInfo.title}}</h3>
+
+                    <a href="{{aboutInfo.cvlink}}" class="btn btn-dark btn-azul zoom-in"><i
+                            class="bi bi-download"></i>&nbsp; &nbsp;Descargar
+                        CV</a>
+                </div>
+
+            </div>
+            <div class="col-lg-6 col-sm-12 info" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
+                <button type="button" (click)="open(editAboutusModal);"
+                    class="btn btn-success btn-sm boton-editar zoom-in"><i class="bi bi-pencil"></i></button>
+                <h1 class="titulo">Conocé más sobre mí</h1>
+                <hr>
+                <p class="parrafo">
+                    {{aboutInfo.aboutdescription}}
+                </p>
+            </div>
+            <div class="col-lg-3 col-sm-12" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
+                <div class="card">
+                    <h2 class="box-personal-info-title">Información personal</h2>
+                    <p><i class="bi bi-person-fill"></i>&nbsp;&nbsp;Edad: {{aboutInfo.age}}</p>
+                    <p><i class="bi bi-person-fill"></i>&nbsp;&nbsp;Ubicación: {{aboutInfo.location}}</p>
+                    <p><i class="bi bi-person-fill"></i>&nbsp;&nbsp;Teléfono: {{aboutInfo.phone}}</p>
+                    <p><i class="bi bi-person-fill"></i>&nbsp;&nbsp;E-Mail: {{aboutInfo.email}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit aboutus modal -->
+
+<ng-template #editAboutusModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title"><i class="bi bi-pencil"></i> Editar información acerca de mí</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="mb-3">
+                <h2>Información personal</h2>
+                <div class="form-floating mb-3">
+                    <input type="text" name="name" id="name" class="form-control rounded-3" id="floatingInput"
+                        [(ngModel)]="aboutInfo.name" placeholder="Coloca tu nombre">
+                    <label for="floatingInput">Nombre</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="title" id="title" class="form-control rounded-3" id="floatingInput"
+                        [(ngModel)]="aboutInfo.title" placeholder="Coloca tu título profesional">
+                    <label for="floatingInput">Título profesional</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="age" id="age" class="form-control rounded-3" id="floatingInput"
+                        [(ngModel)]="aboutInfo.age" placeholder="Coloca tu edad">
+                    <label for="floatingInput">Edad</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="location" id="location" class="form-control rounded-3" id="floatingInput"
+                        [(ngModel)]="aboutInfo.location" placeholder="Coloca tu ubicación">
+                    <label for="floatingInput">Ubicación</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="phone" id="phone" class="form-control rounded-3" id="floatingInput"
+                        [(ngModel)]="aboutInfo.phone" placeholder="Coloca tu teléfono">
+                    <label for="floatingInput">Teléfono</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="email" id="email" class="form-control rounded-3" id="floatingInput"
+                        [(ngModel)]="aboutInfo.email" placeholder="Coloca tu email">
+                    <label for="floatingInput">E-mail</label>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Acerca de mí</span>
+                    <textarea class="form-control" name="description" id="description"
+                        [(ngModel)]="aboutInfo.aboutdescription" aria-label="With textarea"></textarea>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="cvlink" id="cvlink" class="form-control rounded-3" id="floatingInput"
+                        [(ngModel)]="aboutInfo.cvlink" placeholder="Coloca tu curriculum vitae">
+                    <label for="floatingInput">Link de curriculum vitae</label>
+                </div>
+                <br>
+                <h2>Imagenes</h2>
+                <h3>Pega el link de la imagen en cada casillero</h3>
+                <div class="form-floating mb-3">
+                    <input type="text" name="avatarimg" id="avatarimg" class="form-control rounded-3" id="floatingInput"
+                        [(ngModel)]="aboutInfo.avatarimg" placeholder="Coloca el link del avatar">
+                    <label for="floatingInput">Avatar</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="carouselimg1" id="carouselimg1" class="form-control rounded-3"
+                        id="floatingInput" [(ngModel)]="aboutInfo.carouselimg1"
+                        placeholder="Coloca el link de la portada 1">
+                    <label for="floatingInput">Foto de portada 1</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="carouselimg2" id="carouselimg2" class="form-control rounded-3"
+                        id="floatingInput" [(ngModel)]="aboutInfo.carouselimg2"
+                        placeholder="Coloca el link de la portada 2">
+                    <label for="floatingInput">Foto de portada 2</label>
+                </div>
+                <br>
+                <h2>Redes sociales</h2>
+                <div class="input-group mb-3">
+                    <div class="input-group-text">https://facebook.com/</div>
+                    <input type="text" name="facebook" id="facebook" class="form-control" id="floatingInput"
+                        [(ngModel)]="aboutInfo.facebook" placeholder="Coloca tu usuario">
+                    <label for="floatingInput"></label>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-text">https://instagram.com/</div>
+                    <input type="text" name="instagram" id="instagram" class="form-control" id="floatingInput"
+                        [(ngModel)]="aboutInfo.instagram" placeholder="Coloca tu usuario">
+                    <label for="floatingInput"></label>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-text">https://twitter.com/</div>
+                    <input type="text" name="twitter" id="twitter" class="form-control" id="floatingInput"
+                        [(ngModel)]="aboutInfo.twitter" placeholder="Coloca tu usuario">
+                    <label for="floatingInput"></label>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-text">https://youtube.com/</div>
+                    <input type="text" name="youtube" id="youtube" class="form-control" id="floatingInput"
+                        [(ngModel)]="aboutInfo.youtube" placeholder="Coloca tu usuario">
+                    <label for="floatingInput"></label>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-text">https://linkedin.com/</div>
+                    <input type="text" name="linkedin" id="linkedin" class="form-control" id="floatingInput"
+                        [(ngModel)]="aboutInfo.linkedin" placeholder="Coloca tu usuario">
+                    <label for="floatingInput"></label>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-text">https://github.com/</div>
+                    <input type="text" name="github" id="github" class="form-control" id="floatingInput"
+                        [(ngModel)]="aboutInfo.github" placeholder="Coloca tu usuario">
+                    <label for="floatingInput"></label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="save(aboutInfo)"><i
+                class="bi bi-pencil"></i>&nbsp;&nbsp;Guardar</button>
+    </div>
+</ng-template>

@@ -1,0 +1,13 @@
+.footer {
+    height: 200px;
+    padding-top: 40px;
+    background-color: var(--footer-color);
+    justify-content: center;
+    text-align: center;
+}
+.btn-azul{ 
+    color: white;
+    margin: 15px;
+    border-radius: 50%;
+    transform: scale(1.4)
+}

@@ -1,0 +1,136 @@
+<section id="proyectos">
+  <div class="projects">
+    <div class="container" data-aos="zoom-in-right" data-aos-duration="500">
+      <h1 class="titulo">Proyectos</h1>
+      <div class="container">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button class="btn btn-success zoom-in" (click)="open(addProyectoModal)"><i
+              class="bi bi-plus-circle"></i>&nbsp;&nbsp;Agregar
+            proyecto</button>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-lg-6">
+            <div class="timeline-container">
+              <div class="event" data-aos="fade-up" data-aos-duration="700" *ngFor="let proyecto of proyectosInfo">
+                <div class="event-date">{{proyecto.fechainicio}}<br>{{proyecto.fechafin}}</div>
+                <img src="{{proyecto.logo}}" class="timeline-img zoom-in" alt="">
+                <button type="button" class="btn btn-success btn-sm boton-editar zoom-in"
+                  (click)="editBtn(editarProyecto, proyecto)">
+                  <i class="bi bi-pencil"></i></button>
+                <button type="button" class="btn btn-danger btn-sm boton-eliminar zoom-in"
+                  (click)="borrarProyecto(proyecto.id)">
+                  <i class="bi bi-x-circle"></i></button>
+                <h2><strong>{{proyecto.titulo}}</strong></h2>
+                <div class="timeline-content">
+                  <p>
+                    {{proyecto.descripcion}}
+                  </p>
+                  <br>
+                  <a href="http://{{proyecto.web}}" class="btn btn-primary btn-timeline zoom-in"><i
+                      class="bi bi-box-arrow-up-right"></i>&nbsp;&nbsp;Ir al sitio web</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal para Agregar proyecto  -->
+<ng-template #addProyectoModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"><i class="bi bi-plus-circle"></i> Agregar nuevo proyecto
+    </h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <div class="form-floating mb-3">
+          <input type="text" name="titulo" id="titulo" class="form-control rounded-3" id="floatingInput"
+            [(ngModel)]="addProyecto.titulo" placeholder="Coloca el título">
+          <label for="floatingInput">Nombre de la empresa/organización</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" name="fechainicio" id="fechainicio" class="form-control rounded-3" id="floatingInput"
+            [(ngModel)]="addProyecto.fechainicio" placeholder="Coloca el usuario">
+          <label for="floatingInput">Fecha de inicio</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" name="fechafin" id="fechafin" class="form-control rounded-3" id="floatingInput"
+            [(ngModel)]="addProyecto.fechafin" placeholder="Coloca el usuario">
+          <label for="floatingInput">Fecha de finalización</label>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Descripción</span>
+          <textarea class="form-control" name="descripcion" id="descripcion" [(ngModel)]="addProyecto.descripcion"
+            aria-label="With textarea"></textarea>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" name="logo" id="logo" class="form-control rounded-3" id="floatingInput"
+            [(ngModel)]="addProyecto.logo" placeholder="Link imagen">
+          <label for="floatingInput">Link del logo</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" name="web" id="web" class="form-control rounded-3" id="floatingInput"
+            [(ngModel)]="addProyecto.web" placeholder="Link página web">
+          <label for="floatingInput">Link de la página web</label>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="guardar(addProyecto)"><i
+        class="bi bi-plus-circle"></i>&nbsp;&nbsp;Agregar</button>
+  </div>
+</ng-template>
+
+<!-- Modal para Editar proyecto  -->
+<ng-template #editarProyecto let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"><i class="bi bi-pencil"></i> Editar proyecto</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <div class="form-floating mb-3">
+          <input type="text" name="titulo" id="titulo" class="form-control rounded-3" id="floatingInput"
+            [(ngModel)]="addProyecto.titulo" placeholder="Coloca el título">
+          <label for="floatingInput">Nombre de la empresa/organización</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" name="fechainicio" id="fechainicio" class="form-control rounded-3" id="floatingInput"
+            [(ngModel)]="addProyecto.fechainicio" placeholder="Coloca el usuario">
+          <label for="floatingInput">Fecha de inicio</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" name="fechafin" id="fechafin" class="form-control rounded-3" id="floatingInput"
+            [(ngModel)]="addProyecto.fechafin" placeholder="Coloca el usuario">
+          <label for="floatingInput">Fecha de finalización</label>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Descripción</span>
+          <textarea class="form-control" name="descripcion" id="descripcion" [(ngModel)]="addProyecto.descripcion"
+            aria-label="With textarea"></textarea>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" name="logo" id="logo" class="form-control rounded-3" id="floatingInput"
+            [(ngModel)]="addProyecto.logo" placeholder="Link imagen">
+          <label for="floatingInput">Link del logo</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" name="web" id="web" class="form-control rounded-3" id="floatingInput"
+            [(ngModel)]="addProyecto.web" placeholder="Link página web">
+          <label for="floatingInput">Link de la página web</label>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="editar(addProyecto)"><i
+        class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</button>
+  </div>
+</ng-template>

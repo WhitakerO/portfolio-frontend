@@ -1,0 +1,8 @@
+html {
+    scroll-behavior: smooth;
+}
+.sticky {
+    position: sticky;
+    z-index: 999;
+ }
+ 

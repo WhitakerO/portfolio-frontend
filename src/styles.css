@@ -1,0 +1,39 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+:root {
+    --main-color: #242427;
+    --secondary-color: #27282d;
+    --footer-color: #2b2b2b;
+    --card-color: #343952;
+    --navbar-color: #343952;
+  }
+  
+html, body { height: 100%; scroll-behavior: smooth; color: #fafafa}
+body { margin: 0; font-family: 'Poppins', sans-serif; font-size: 2rem; }
+p { font-family: 'Poppins', sans-serif; color: #fafafa}
+span { font-family: 'Poppins', sans-serif; }
+h1 { font-family: 'Manrope', sans-serif; color: #e6e4e9; }
+h2 { font-family: 'Manrope', sans-serif; }
+h3 { font-family: 'Manrope', sans-serif; }
+h4 { font-family: 'Poppins', sans-serif; }
+button { font-family: 'Poppins', sans-serif; }
+.btn-azul { 
+    background-color: #28548d;
+    border: none;
+}
+.btn-azul:hover { 
+    background-color: #546fc5;
+}
+.zoom-in { 
+    transition: transform 0.2s ease-in 0s;
+}
+.zoom-in:hover {
+    transition: transform 0.2s ease-in 0s;
+    transform: scale(1.05)
+}
+.modal-body {
+    color:black;
+}
+.modal-header { 
+    color: black;
+}

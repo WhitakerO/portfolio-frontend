@@ -1,0 +1,113 @@
+.skills {
+    background-color: var(--main-color);
+    padding-top: 5%;
+    padding-bottom: 45px;
+}
+
+.titulo {
+    text-align: center;
+    padding-bottom: 3%;
+    font-size: 40px;
+}
+
+.line {
+    align-items: center;
+    border-radius: 10%;
+    border: red;
+    width: 10%;
+    height: 10%;
+}
+
+.divider:before {
+    position: relative;
+    float: left;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    background: linear-gradient(to right, rgba(100, 100, 100, 0), rgba(100, 100, 100, 1) 50%);
+    width: 50%;
+    height: .7px;
+    content: "";
+}
+
+.divider:after {
+    position: relative;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    float: right;
+    background: linear-gradient(to left, rgba(100, 100, 100, 0), rgba(100, 100, 100, 1) 50%);
+    width: 50%;
+    height: .7px;
+    content: "";
+}
+
+.card {
+    margin-top: 10px;
+    background-color: var(--card-color);
+    padding: 10px 10px 10px 30px;
+    border-radius: 8px;
+    transition: transform .5s ease-in-out;
+}
+
+.card-language { 
+    background-color: rgb(58, 73, 83);
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.card-img {
+    width: 4rem;
+    float: right;
+}
+
+.card-details {
+    margin-top: 20px;
+    clear: right;
+    vertical-align: middle;
+}
+
+.bar {
+    position: absolute;
+    top: 70%;
+    width: 75%;
+}
+
+.bar::after {
+    background-color: green;
+}
+
+.mat-progress-bar-fill::after {
+    background-color: green;
+}
+
+.mat-progress-bar-buffer {
+    background: #E4E8EB;
+}
+
+.boton-editar {
+    position: relative;
+    left: 28%;
+    border-radius: 50%;
+}
+
+.boton-eliminar {
+    position: relative;
+    left: 30%;
+    border-radius: 50%;
+}
+
+.circles {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.circle-title {
+    font-size: 30px;
+    color: #e6e4e9;
+    font-weight: 100px;
+}
+
+.circulo {
+    font-family: 'Anton', sans-serif;
+}

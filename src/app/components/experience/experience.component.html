@@ -1,0 +1,124 @@
+<section id="experiencia">
+    <div class="experience">
+        <div class="container" cdkDropList (cdkDropListDropped)="drop($event)" data-aos="zoom-in-right"
+            data-aos-duration="500">
+            <h1 class="titulo">Experiencia laboral</h1>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn btn-success zoom-in" (click)="open(content)"><i
+                        class="bi bi-plus-circle"></i>&nbsp;&nbsp;Agregar
+                    experiencia</button>
+            </div>
+            <div class="row tarjeta" cdkDrag *ngFor="let experiencia of expLaboralInfo" data-aos="fade-up"
+                data-aos-duration="500">
+                <div class="col-lg-4 col-sm-12" style="align-items: center;">
+                    <div class="card" style="width: 18rem; align-items: center;">
+                        <img class="card-img-top" src="{{experiencia.linkimg}}" class="image-card" alt="Imagen">
+                        <div class="card-body">
+                            <p class="card-text">{{experiencia.fechainicio}} <i class="bi bi-arrow-right"
+                                    *ngIf="experiencia.fechafin != null && experiencia.fechafin != ''"></i>
+                                {{experiencia.fechafin}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-sm-12">
+                    <div class="jumbotron jumbotron-fluid">
+                        <div class="container descripcion">
+                            <h1>{{experiencia.titulo}}</h1>
+                            <p style="text-align: justify;">{{experiencia.descripcion}}</p>
+                            <button type="button" (click)="editBtn(editarExp, experiencia)"
+                                class="btn btn-success boton-editar zoom-in"><i class="bi bi-pencil"></i></button>
+                            <button type="button" (click)="borrarExp(experiencia.id)"
+                                class="btn btn-danger boton-eliminar zoom-in"><i class="bi bi-x-circle"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Modal para Agregar experiencia  -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title"><i class="bi bi-plus-circle"></i> Agregar nueva experiencia
+        </h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="mb-3">
+                <div class="form-floating mb-3">
+                    <input type="text" name="titulo" id="titulo" class="form-control rounded-3" id="floatingInput"
+                        [(ngModel)]="addExp.titulo" placeholder="Coloca el título">
+                    <label for="floatingInput">Nombre de la empresa/organización</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="fechainicio" id="fechainicio" class="form-control rounded-3"
+                        id="floatingInput" [(ngModel)]="addExp.fechainicio" placeholder="Coloca el usuario">
+                    <label for="floatingInput">Fecha de inicio</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="fechafin" id="fechafin" class="form-control rounded-3" id="floatingInput"
+                        [(ngModel)]="addExp.fechafin" placeholder="Coloca el usuario">
+                    <label for="floatingInput">Fecha de finalización</label>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Descripción</span>
+                    <textarea class="form-control" name="descripcion" id="descripcion" [(ngModel)]="addExp.descripcion"
+                        aria-label="With textarea"></textarea>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="linkimg" id="linkimg" class="form-control rounded-3" id="floatingInput"
+                        [(ngModel)]="addExp.linkimg" placeholder="Link imagen">
+                    <label for="floatingInput">Link de la imagen</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="guardar(addExp)"><i
+                class="bi bi-plus-circle"></i>&nbsp;&nbsp;Agregar</button>
+    </div>
+</ng-template>
+
+<!-- Modal para Editar experiencia  -->
+<ng-template #editarExp let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title"><i class="bi bi-pencil"></i> Editar experiencia</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="mb-3">
+                <div class="form-floating mb-3">
+                    <input type="text" name="titulo" id="titulo" class="form-control rounded-3" id="floatingInput"
+                        [(ngModel)]="addExp.titulo" placeholder="Coloca el título">
+                    <label for="floatingInput">Nombre de la empresa/organización</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="fechainicio" id="fechainicio" class="form-control rounded-3"
+                        id="floatingInput" [(ngModel)]="addExp.fechainicio" placeholder="Coloca el usuario">
+                    <label for="floatingInput">Fecha de inicio</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="fechafin" id="fechafin" class="form-control rounded-3" id="floatingInput"
+                        [(ngModel)]="addExp.fechafin" placeholder="Coloca el usuario">
+                    <label for="floatingInput">Fecha de finalización</label>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Descripción</span>
+                    <textarea class="form-control" name="descripcion" id="descripcion" [(ngModel)]="addExp.descripcion"
+                        aria-label="With textarea"></textarea>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="linkimg" id="linkimg" class="form-control rounded-3" id="floatingInput"
+                        [(ngModel)]="addExp.linkimg" placeholder="Link imagen">
+                    <label for="floatingInput">Link de la imagen</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="editar(addExp)"><i
+                class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</button>
+    </div>
+</ng-template>

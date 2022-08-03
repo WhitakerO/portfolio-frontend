@@ -1,0 +1,62 @@
+
+<mat-toolbar id="nav" class="navbar fixed-top navbar-transparent scrolling-navbar navbar-transparent" color-on-scroll="400">
+  <button class="btn-menu" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menú">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <a href="#" mat-menu-item>
+      <mat-icon>home</mat-icon>Inicio
+    </a>
+    <a href="#experiencia" mat-menu-item>
+      <mat-icon>work</mat-icon>Experiencia laboral
+    </a>
+    <a href="#educacion" mat-menu-item>
+      <mat-icon>school</mat-icon>Educación
+    </a>
+    <a href="#proyectos" mat-menu-item>
+      <mat-icon>cases</mat-icon>Proyectos
+    </a>
+    <a href="#habilidades" mat-menu-item>
+      <mat-icon>insights</mat-icon>Habilidades
+    </a>
+  </mat-menu>
+
+  <img class="img" src="../../../assets/images/ArgentinaPrograma.png">
+  <img class="img" src="../../../assets/images/LogosInti.png">
+
+  <span class="espaciador"></span>
+
+  <button class="login iconos" #tooltip="matTooltip" (click)="open(loginModal);" matTooltip="Inicia sesión en tu cuenta" mat-mini-fab color="accent"
+    aria-label="Iniciar sesión">
+    <mat-icon>login</mat-icon>
+  </button>
+</mat-toolbar>
+
+
+<!-- Login modal -->
+<ng-template #loginModal let-modal>
+  <div class="modal-header">
+      <h2 class="modal-title" id="modal-basic-title"><i class="bi bi-box-arrow-in-right"></i> Iniciar sesión en mi cuenta</h2>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body p-5">
+      <form>
+          <div class="mb-3 ml-5">
+              <div class="form-floating mb-3">
+                  <input type="text" name="user" id="user" class="form-control rounded-3"
+                      id="floatingInput" [(ngModel)]="userLogin" placeholder="Coloca el usuario">
+                  <label for="floatingInput">Nombre de usuario</label>
+              </div>
+              <div class="form-floating mb-3">
+                  <input type="password" name="password" id="password" class="form-control rounded-3"
+                      id="floatingInput" [(ngModel)]="userPassword" placeholder="Coloca la contraseña">
+                  <label for="floatingInput">Contraseña</label>
+              </div>
+          </div>
+      </form>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-success" data-dismiss="modal"><i
+              class="bi bi-box-arrow-in-right"></i>&nbsp;&nbsp;Iniciar sesión</button>
+  </div>
+</ng-template>
