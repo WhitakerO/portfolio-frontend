@@ -1,9 +1,3 @@
-.imagen {
-    height: 330px;
-    display: flex;
-    width: 100%;
-}
-
 .carousel {
     position: relative;
     z-index: 20;
@@ -20,7 +14,7 @@ img {
         display: none;
     }
 
-    .imagen {
+    img {
         display: none;
     }
 }
