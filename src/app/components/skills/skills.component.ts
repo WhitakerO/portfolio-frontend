@@ -24,7 +24,6 @@ export class SkillsComponent implements OnInit {
   ngOnInit(): void {
     this.getSkill();
   }
-
   getSkill() {
     this.skillService.getSkill().subscribe(response => {
       this.skillsInfo = response;
@@ -34,7 +33,7 @@ export class SkillsComponent implements OnInit {
       })
     })
   }
-  
+
   deleteSkill(id: number) {
     return this.skillService.deleteSkill(id).subscribe(
       res => { this.ngOnInit(), this.notificador.mostrarNotificacion("Habilidad borrada correctamente.", "Cerrar") }

@@ -3,4 +3,5 @@ export class Skill {
     name:string;
     percentage: number;
     islanguage: boolean = false;
+    image: string;
 }
