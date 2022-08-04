@@ -1,6 +1,6 @@
 <section id="educacion">
-    <div class="educacion">
-        <div class="container" data-aos="zoom-in-right"  data-aos-duration="500">
+    <div class="education">
+        <div class="container" data-aos="zoom-in-right" data-aos-duration="500">
             <h1 class="titulo">Educación</h1>
             <div class="row">
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end pb-2">
@@ -8,33 +8,33 @@
                             class="bi bi-plus-circle"></i>&nbsp;&nbsp;Agregar
                         educación</button>
                 </div>
-                <div class="col-lg-4" *ngFor="let educacion of educacionInfo" data-aos="fade-up" 
+                <div class="col-lg-4" *ngFor="let education of educationInfo" data-aos="fade-up"
                     data-aos-duration="500">
                     <div class="card card-margin">
                         <div class="card-header no-border">
-                            <h5 class="card-title">{{educacion.institucion}} <br> {{educacion.ubicacion}}</h5>
+                            <h5 class="card-title">{{education.institution}} <br> {{education.location}}</h5>
                         </div>
                         <div class="card-body pt-0">
                             <div class="widget-49">
                                 <div class="widget-49-title-wrapper">
                                     <div class="widget-49-date-primary">
-                                        <img class="card-image" src="{{educacion.linkimg}}" alt="">
+                                        <img class="card-image" src="{{education.logo}}" alt="">
                                     </div>
                                     <div class="widget-49-meeting-info">
-                                        <span class="widget-49-pro-title"><strong>{{educacion.titulo}}</strong></span>
-                                        <span class="widget-49-meeting-time" *ngIf="educacion.duracion">Duración:
-                                            {{educacion.duracion}}</span>
-                                        <span class="widget-49-meeting-time">{{educacion.fechafin}}</span>
+                                        <span class="widget-49-pro-title"><strong>{{education.title}}</strong></span>
+                                        <span class="widget-49-meeting-time" *ngIf="education.duration">Duración:
+                                            {{education.duration}}</span>
+                                        <span class="widget-49-meeting-time">{{education.enddate}}</span>
                                     </div>
                                 </div>
                                 <div class="widget-49-meeting-points">
                                     <p>
-                                        {{educacion.descripcion}}
+                                        {{education.description}}
                                     </p>
-                                    <button type="button" (click)="editBtn(editEducationModal, educacion)"
+                                    <button type="button" (click)="editBtn(editEducationModal, education)"
                                         class="btn btn-success btn-sm boton-editar zoom-in"><i
                                             class="bi bi-pencil"></i></button>
-                                    <button type="button" (click)="borrarExp(educacion.id)"
+                                    <button type="button" (click)="deleteEducation(education.id)"
                                         class="btn btn-danger btn-sm boton-eliminar zoom-in"><i
                                             class="bi bi-x-circle"></i></button>
                                 </div>
@@ -43,111 +43,123 @@
                     </div>
                 </div>
             </div>
-  
 
 
-<ng-template #addEducationModal let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title"><i class="bi bi-plus-circle"></i> Agregar nueva tarjeta de
-            educación</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-    </div>
-    <div class="modal-body">
-        <form>
-            <div class="mb-3">
-                <div class="form-floating mb-3">
-                    <input type="text" name="institucion" id="institucion" class="form-control rounded-3"
-                        id="floatingInput" [(ngModel)]="addEducation.institucion" placeholder="Coloca la institucion">
-                    <label for="floatingInput">Nombre de la institución</label>
+
+            <ng-template #addEducationModal let-modal>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title"><i class="bi bi-plus-circle"></i> Agregar nueva
+                        tarjeta de
+                        educación</h4>
+                    <button type="button" class="btn-close" aria-label="Close"
+                        (click)="modal.dismiss('Cross click')"></button>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="text" name="fechainicio" id="fechainicio" class="form-control rounded-3"
-                        id="floatingInput" [(ngModel)]="addEducation.ubicacion" placeholder="Coloca el usuario">
-                    <label for="floatingInput">Ubicación</label>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" name="institution" id="institution" class="form-control rounded-3"
+                                    id="floatingInput" [(ngModel)]="addEducation.institution"
+                                    placeholder="Coloca la institucion">
+                                <label for="floatingInput">Nombre de la institución</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="location" id="location" class="form-control rounded-3"
+                                    id="floatingInput" [(ngModel)]="addEducation.location"
+                                    placeholder="Coloca la ubicación">
+                                <label for="floatingInput">Ubicación</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="title" id="title" class="form-control rounded-3"
+                                    id="floatingInput" [(ngModel)]="addEducation.title" placeholder="Coloca el título">
+                                <label for="floatingInput">Título conseguido</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="duration" id="duration" class="form-control rounded-3"
+                                    id="floatingInput" [(ngModel)]="addEducation.duration"
+                                    placeholder="Coloca la duración">
+                                <label for="floatingInput">Duración (opcional)</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="enddate" id="enddate" class="form-control rounded-3"
+                                    id="floatingInput" [(ngModel)]="addEducation.enddate"
+                                    placeholder="Coloca la fecha de finalización">
+                                <label for="floatingInput">Fecha de finalización</label>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Descripción</span>
+                                <textarea class="form-control" name="description" id="description"
+                                    [(ngModel)]="addEducation.description" aria-label="With textarea"></textarea>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="logo" id="logo" class="form-control rounded-3"
+                                    id="floatingInput" [(ngModel)]="addEducation.logo" placeholder="Link logo">
+                                <label for="floatingInput">Link del logo de la institucion</label>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="text" name="titulo" id="titulo" class="form-control rounded-3" id="floatingInput"
-                        [(ngModel)]="addEducation.titulo" placeholder="Coloca el usuario">
-                    <label for="floatingInput">Título conseguido</label>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="save(addEducation)"><i
+                            class="bi bi-plus-circle"></i>&nbsp;&nbsp;Agregar</button>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="text" name="duracion" id="duracion" class="form-control rounded-3" id="floatingInput"
-                        [(ngModel)]="addEducation.duracion" placeholder="Coloca el usuario">
-                    <label for="floatingInput">Duración (opcional)</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" name="fechafin" id="fechafin" class="form-control rounded-3" id="floatingInput"
-                        [(ngModel)]="addEducation.fechafin" placeholder="Coloca el usuario">
-                    <label for="floatingInput">Fecha de finalización</label>
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Descripción</span>
-                    <textarea class="form-control" name="descripcion" id="descripcion"
-                        [(ngModel)]="addEducation.descripcion" aria-label="With textarea"></textarea>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" name="linkimg" id="linkimg" class="form-control rounded-3" id="floatingInput"
-                        [(ngModel)]="addEducation.linkimg" placeholder="Link imagen">
-                    <label for="floatingInput">Link del logo de la institucion</label>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="guardar(addEducation)"><i
-                class="bi bi-plus-circle"></i>&nbsp;&nbsp;Agregar</button>
-    </div>
-</ng-template>
+            </ng-template>
 
 
-<ng-template #editEducationModal let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title"><i class="bi bi-pencil"></i> Editar tarjeta de educación</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-    </div>
-    <div class="modal-body">
-        <form>
-            <div class="mb-3">
-                <div class="form-floating mb-3">
-                    <input type="text" name="institucion" id="institucion" class="form-control rounded-3"
-                        id="floatingInput" [(ngModel)]="addEducation.institucion" placeholder="Coloca la institucion">
-                    <label for="floatingInput">Nombre de la institución</label>
+            <ng-template #editEducationModal let-modal>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title"><i class="bi bi-pencil"></i> Editar tarjeta de
+                        educación</h4>
+                    <button type="button" class="btn-close" aria-label="Close"
+                        (click)="modal.dismiss('Cross click')"></button>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="text" name="fechainicio" id="fechainicio" class="form-control rounded-3"
-                        id="floatingInput" [(ngModel)]="addEducation.ubicacion" placeholder="Coloca el usuario">
-                    <label for="floatingInput">Ubicación</label>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <div class="form-floating mb-3">
+                                <input type="text" name="institution" id="institution" class="form-control rounded-3"
+                                    id="floatingInput" [(ngModel)]="addEducation.institution"
+                                    placeholder="Coloca la institucion">
+                                <label for="floatingInput">Nombre de la institución</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="location" id="location" class="form-control rounded-3"
+                                    id="floatingInput" [(ngModel)]="addEducation.location"
+                                    placeholder="Coloca la ubicación">
+                                <label for="floatingInput">Ubicación</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="title" id="title" class="form-control rounded-3"
+                                    id="floatingInput" [(ngModel)]="addEducation.title" placeholder="Coloca el título">
+                                <label for="floatingInput">Título conseguido</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="duration" id="duration" class="form-control rounded-3"
+                                    id="floatingInput" [(ngModel)]="addEducation.duration"
+                                    placeholder="Coloca la duración">
+                                <label for="floatingInput">Duración (opcional)</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="enddate" id="enddate" class="form-control rounded-3"
+                                    id="floatingInput" [(ngModel)]="addEducation.enddate"
+                                    placeholder="Coloca la fecha de finalización">
+                                <label for="floatingInput">Fecha de finalización</label>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Descripción</span>
+                                <textarea class="form-control" name="description" id="description"
+                                    [(ngModel)]="addEducation.description" aria-label="With textarea"></textarea>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="logo" id="logo" class="form-control rounded-3"
+                                    id="floatingInput" [(ngModel)]="addEducation.logo" placeholder="Link logo">
+                                <label for="floatingInput">Link del logo de la institucion</label>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="text" name="titulo" id="titulo" class="form-control rounded-3" id="floatingInput"
-                        [(ngModel)]="addEducation.titulo" placeholder="Coloca el usuario">
-                    <label for="floatingInput">Título conseguido</label>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="edit(addEducation)"><i
+                            class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</button>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="text" name="duracion" id="duracion" class="form-control rounded-3" id="floatingInput"
-                        [(ngModel)]="addEducation.duracion" placeholder="Coloca el usuario">
-                    <label for="floatingInput">Duración (opcional)</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" name="fechafin" id="fechafin" class="form-control rounded-3" id="floatingInput"
-                        [(ngModel)]="addEducation.fechafin" placeholder="Coloca el usuario">
-                    <label for="floatingInput">Fecha de finalización</label>
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Descripción</span>
-                    <textarea class="form-control" name="descripcion" id="descripcion"
-                        [(ngModel)]="addEducation.descripcion" aria-label="With textarea"></textarea>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" name="linkimg" id="linkimg" class="form-control rounded-3" id="floatingInput"
-                        [(ngModel)]="addEducation.linkimg" placeholder="Link imagen">
-                    <label for="floatingInput">Link del logo de la institucion</label>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="editar(addEducation)"><i
-                class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</button>
-    </div>
-</ng-template>
+            </ng-template>

@@ -1,8 +1,8 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Educacion } from 'src/app/Classes/Educacion';
-import { EducacionService } from 'src/app/Service/educacion.service';
+import { Education } from 'src/app/Classes/Education';
+import { EducationService } from 'src/app/Service/education.service';
 import { NotificadorService } from 'src/app/Service/notificador.service';
 
 @Component({
@@ -13,49 +13,51 @@ import { NotificadorService } from 'src/app/Service/notificador.service';
 export class EducationComponent implements OnInit {
 
   closeResult = '';
-  addEducation = new Educacion;
-  educacionInfo: Educacion[];
+  addEducation = new Education;
+  educationInfo: Education[];
 
-  constructor(private educacionService: EducacionService, private notificador: NotificadorService, private modalService: NgbModal) { }
+  constructor(private educationService: EducationService, private notificador: NotificadorService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.getEducacion();
+    this.getEducation();
   }
 
-  getEducacion() {
-    this.educacionService.getEducacion().subscribe(response => {
-      return this.educacionInfo = response;
+  getEducation() {
+    this.educationService.getEducation().subscribe(response => {
+      return this.educationInfo = response;
     })
   }
-  borrarExp(id: number) {
-    return this.educacionService.deleteEducacion(id).subscribe(
+
+  deleteEducation(id: number) {
+    return this.educationService.deleteEducation(id).subscribe(
       res => { this.ngOnInit(), this.notificador.mostrarNotificacion("Tarjeta de educación borrada correctamente.", "Cerrar") }
     );
   }
   
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.educacionInfo, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.educationInfo, event.previousIndex, event.currentIndex);
     console.log(event.previousIndex)
     console.log(event.currentIndex)
   }
 
   open(content: any) {
-    this.addEducation = new Educacion;
+    this.addEducation = new Education;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
-  editBtn(content: any, exp: Educacion) {
+  editBtn(content: any, exp: Education) {
     this.addEducation = exp;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
-      this.ngOnInit();
+      if(result) this.ngOnInit();
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      this.ngOnInit();
+      if(reason) this.ngOnInit();
     });
+    
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -66,20 +68,17 @@ export class EducationComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-  guardar(e: Educacion) {
+  save(e: Education) {
     this.modalService.dismissAll();
-    this.educacionService.agregarEducacion(e);
+    this.educationService.addEducation(e);
     this.notificador.mostrarNotificacion("Has creado una nueva tarjeta de educación.", "Cerrar");
     return this.ngOnInit();
   }
-  trackByMethod (index:number, el:any) {
-    return el.titulo
-  }
-  editar(e: Educacion) {
+
+  edit(e: Education) {
     this.modalService.dismissAll();
-    this.educacionService.agregarEducacion(e);
+    this.educationService.addEducation(e);
     this.notificador.mostrarNotificacion("Has editado con éxito esta tarjeta de educación.", "Cerrar");
-    return this.ngOnInit();
   }
 
 }
