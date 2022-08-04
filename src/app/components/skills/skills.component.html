@@ -24,13 +24,15 @@
             <div class="divider mb-4"></div>
             <div class="row">
                 <div class="col-lg-6 col-sm-12" *ngFor="let language of languageInfoArray">
-                    <div class="card card-language">
-                        <h2 class="card-details">
-                            <img src="{{language.image}}" class="card-img"
-                                alt="Imagen">{{language.name}}
-                        </h2>
-                        <mat-progress-bar mode="determinate" class="bar" value="{{language.percentage}}">
-                        </mat-progress-bar>
+                    <div class="card">
+                        <div class="card-details">
+                            <img *ngIf="language.image" src="{{language.image}}" class="card-img" alt="Imagen">
+                            <h2>{{language.name}}</h2>
+                            
+                        </div>
+                        <div class="progress bar" #tooltip="matTooltip" matTooltip="{{language.percentage}}%" matTooltipPosition="above">
+                            <div class="progress-bar" [style.width.%]=language.percentage style="background: #0074b7" ></div>
+                        </div>
                     </div>
                 </div>
 

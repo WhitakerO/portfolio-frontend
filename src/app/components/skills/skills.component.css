@@ -18,22 +18,20 @@
     margin-top: 10px;
     clear: right;
     vertical-align: middle;
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-    transition: filter 0.5s ease-in 0s;
 }
 .card-details h2 {
     padding-bottom: 15px;
 }
-.card-details img {
-    margin-right: 10px;
+.card img {
+    margin-right: 3%;
     position: absolute;
-    top: 14%;
+    top: 21%;
     right: 3px;
-    
-    
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    transition: filter 0.5s ease-in 0s;
 }
-.card-details:hover {
+.card:hover img{
     -webkit-filter: grayscale(0%);
     filter: grayscale(0%);
 }
@@ -52,8 +50,9 @@
 .progress .progress-bar {
     border-radius: 20px;
     border: 1px solid rgb(69, 66, 82);
-    animation: animate-positive 2s;
+    animation: animate-positive 3s;
 }
+
 .progress .progress-value {
     width: 65px;
     height: 25px;
