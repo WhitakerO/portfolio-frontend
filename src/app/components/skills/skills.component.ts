@@ -29,14 +29,12 @@ export class SkillsComponent implements OnInit {
     this.skillService.getSkill().subscribe(response => {
       this.skillsInfo = response;
       this.skillsInfo.forEach((skill) => {
-        if(skill.islanguage) {
           this.languageInfoArray = this.skillsInfo.filter((skill) => skill.islanguage);
           this.skillsInfoArray = this.skillsInfo.filter((skill) => !skill.islanguage)
-        }
       })
     })
   }
-
+  
   deleteSkill(id: number) {
     return this.skillService.deleteSkill(id).subscribe(
       res => { this.ngOnInit(), this.notificador.mostrarNotificacion("Habilidad borrada correctamente.", "Cerrar") }
