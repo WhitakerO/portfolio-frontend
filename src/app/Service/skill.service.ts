@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Habilidades } from '../Classes/Habilidades';
+import { Skill } from '../Classes/Skill';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HabilidadesService {
+export class SkillService {
 
   private URL = "http://localhost:8080/api/habilidad/obtener";
 
   constructor(private httpClient:HttpClient) { }
 
-  getHabilidades(): Observable<Habilidades[]> {
-    return this.httpClient.get<Habilidades[]>(this.URL);
+  getSkill(): Observable<Skill[]> {
+    return this.httpClient.get<Skill[]>(this.URL);
   }
-  deleteHabilidades(id:number) {
+  deleteSkill(id:number) {
     return this.httpClient.post(`http://localhost:8080/api/habilidad/eliminar/${id}`, {});
   }
-  agregarHabilidades(f : Habilidades) {
-    return this.httpClient.post<Habilidades>(`http://localhost:8080/api/habilidad/agregar/`, f).subscribe( 
+  addSkill(f : Skill) {
+    return this.httpClient.post<Skill>(`http://localhost:8080/api/habilidad/agregar/`, f).subscribe( 
       res=> { console.log(`Se metió el objeto ${f}`) } 
     );
   }

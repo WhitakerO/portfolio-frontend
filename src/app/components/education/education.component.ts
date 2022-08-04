@@ -52,10 +52,8 @@ export class EducationComponent implements OnInit {
     this.addEducation = exp;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
-      if(result) this.ngOnInit();
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      if(reason) this.ngOnInit();
     });
     
   }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Habilidades } from 'src/app/Classes/Habilidades';
-import { HabilidadesService } from 'src/app/Service/habilidades.service';
+import { Skill } from 'src/app/Classes/Skill';
+import { SkillService } from 'src/app/Service/skill.service';
 import { NotificadorService } from 'src/app/Service/notificador.service';
 
 
@@ -14,22 +14,22 @@ import { NotificadorService } from 'src/app/Service/notificador.service';
 export class SkillsComponent implements OnInit {
 
   closeResult = '';
-  addSkill = new Habilidades;
-  skillsInfo: Habilidades[];
-  skillsInfoArray: Habilidades[] = [];
-  languageInfoArray: Habilidades[] = [];
+  addSkill = new Skill;
+  skillsInfo: Skill[];
+  skillsInfoArray: Skill[] = [];
+  languageInfoArray: Skill[] = [];
 
-  constructor(private habilidadesService: HabilidadesService, private notificador: NotificadorService, private modalService: NgbModal) { }
+  constructor(private skillService: SkillService, private notificador: NotificadorService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.getHabilidades();
+    this.getSkill();
   }
 
-  getHabilidades() {
-    this.habilidadesService.getHabilidades().subscribe(response => {
+  getSkill() {
+    this.skillService.getSkill().subscribe(response => {
       this.skillsInfo = response;
       for (let skill of this.skillsInfo) {
-        if(skill.esidioma) {
+        if(skill.islanguage) {
           this.languageInfoArray.push(skill);
         } else {
           this.skillsInfoArray.push(skill);
@@ -38,14 +38,14 @@ export class SkillsComponent implements OnInit {
     })
   }
 
-  borrarHabilidad(id: number) {
-    return this.habilidadesService.deleteHabilidades(id).subscribe(
+  deleteSkill(id: number) {
+    return this.skillService.deleteSkill(id).subscribe(
       res => { this.ngOnInit(), this.notificador.mostrarNotificacion("Habilidad borrada correctamente.", "Cerrar") }
     );
   }
 
   open(content: any) {
-    this.addSkill = new Habilidades;
+    this.addSkill = new Skill;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -53,7 +53,7 @@ export class SkillsComponent implements OnInit {
     });
   }
 
-  editBtn(content: any, habil: Habilidades) {
+  editBtn(content: any, habil: Skill) {
     this.addSkill = habil;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -74,25 +74,25 @@ export class SkillsComponent implements OnInit {
     }
   }
 
-  guardar(e: Habilidades) {
-    this.habilidadesService.agregarHabilidades(e);
+  save(e: Skill) {
+    this.skillService.addSkill(e);
     this.notificador.mostrarNotificacion("Has creado una nueva habilidad.", "Cerrar");
     this.modalService.dismissAll();
     return this.ngOnInit();
   }
 
-  esIdioma(event:any) {
+  isLanguage(event:any) {
     if (event.target.checked) {
-      this.addSkill.esidioma = true;
+      this.addSkill.islanguage = true;
     }
     else {
-      this.addSkill.esidioma = false;
+      this.addSkill.islanguage = false;
     }
   }
 
-  editar(e: Habilidades) {
+  edit(e: Skill) {
     this.modalService.dismissAll()
-    this.habilidadesService.agregarHabilidades(e);
+    this.skillService.addSkill(e);
     this.notificador.mostrarNotificacion("Has editado con éxito esta habilidad.", "Cerrar");
     return this.ngOnInit();
   }

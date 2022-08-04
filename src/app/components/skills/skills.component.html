@@ -11,9 +11,9 @@
                 <div class="col-lg-6 col-sm-12" *ngFor="let skill of skillsInfoArray">
                     <div class="card">
                         <h2 class="card-details">
-                            <img src="../../../assets/images/logo-cl.png" class="card-img" alt="Imagen">{{skill.nombre}}
+                            <img src="../../../assets/images/logo-cl.png" class="card-img" alt="Imagen">{{skill.name}}
                         </h2>
-                        <mat-progress-bar mode="determinate" class="bar" value="{{skill.porcentaje}}">
+                        <mat-progress-bar mode="determinate" class="bar" value="{{skill.percentage}}">
                         </mat-progress-bar>
                     </div>
                 </div>
@@ -24,9 +24,9 @@
                     <div class="card card-language">
                         <h2 class="card-details">
                             <img src="../../../assets/images/logo-cl.png" class="card-img"
-                                alt="Imagen">{{language.nombre}}
+                                alt="Imagen">{{language.name}}
                         </h2>
-                        <mat-progress-bar mode="determinate" class="bar" value="{{language.porcentaje}}">
+                        <mat-progress-bar mode="determinate" class="bar" value="{{language.percentage}}">
                         </mat-progress-bar>
                     </div>
                 </div>
@@ -47,18 +47,18 @@
         <form>
             <div class="mb-3">
                 <div class="form-floating mb-3">
-                    <input type="text" name="titulo" id="titulo" [(ngModel)]="addSkill.nombre"
-                        class="form-control rounded-3" id="floatingInput" placeholder="Coloca el título">
-                    <label for="floatingInput" *ngIf="addSkill.esidioma == false">Habilidad</label>
-                    <label for="floatingInput" *ngIf="addSkill.esidioma == true">Idioma</label>
+                    <input type="text" name="name" id="name" [(ngModel)]="addSkill.name"
+                        class="form-control rounded-3" id="floatingInput" placeholder="Coloca el nombre">
+                    <label for="floatingInput" *ngIf="addSkill.islanguage == false">Habilidad</label>
+                    <label for="floatingInput" *ngIf="addSkill.islanguage == true">Idioma</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" name="porcentaje" id="porcentaje" class="form-control rounded-3"
-                        id="floatingInput" [(ngModel)]="addSkill.porcentaje" placeholder="Coloca el usuario">
+                    <input type="text" name="percentage" id="percentage" class="form-control rounded-3"
+                        id="floatingInput" [(ngModel)]="addSkill.percentage" placeholder="Coloca el porcentaje">
                     <label for="floatingInput">Porcentaje</label>
                 </div>
                 <div class="form-check form-switch">
-                    <input class="form-check-input" (change)="esIdioma($event)" type="checkbox" role="switch"
+                    <input class="form-check-input" (change)="isLanguage($event)" type="checkbox" role="switch"
                         id="flexSwitchCheckDefault">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Es un idioma</label>
                 </div>
@@ -66,7 +66,7 @@
         </form>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="guardar(addSkill)"><i
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="save(addSkill)"><i
                 class="bi bi-plus-circle"></i>&nbsp;&nbsp;Agregar</button>
     </div>
 </ng-template>
@@ -81,18 +81,18 @@
         <form>
             <div class="mb-3">
                 <div class="form-floating mb-3">
-                    <input type="text" name="titulo" id="titulo" class="form-control rounded-3" id="floatingInput"
-                        [(ngModel)]="addSkill.nombre" placeholder="Coloca el título">
-                    <label for="floatingInput" *ngIf="addSkill.esidioma == false">Habilidad</label>
-                    <label for="floatingInput" *ngIf="addSkill.esidioma == true">Idioma</label>
+                    <input type="text" name="name" id="name" class="form-control rounded-3" id="floatingInput"
+                        [(ngModel)]="addSkill.name" placeholder="Coloca el nombre">
+                    <label for="floatingInput" *ngIf="addSkill.islanguage == false">Habilidad</label>
+                    <label for="floatingInput" *ngIf="addSkill.islanguage == true">Idioma</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" name="fechainicio" id="fechainicio" class="form-control rounded-3"
-                        id="floatingInput" [(ngModel)]="addSkill.porcentaje" placeholder="Coloca el usuario">
+                    <input type="text" name="percentage" id="percentage" class="form-control rounded-3"
+                        id="floatingInput" [(ngModel)]="addSkill.percentage" placeholder="Coloca el porcentaje">
                     <label for="floatingInput">Porcentaje</label>
                 </div>
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" [(ngModel)]="addSkill.esidioma"
+                    <input class="form-check-input" type="checkbox" role="switch" [(ngModel)]="addSkill.islanguage"
                         id="flexSwitchCheckDefault">
                     <label class="form-check-label" for="flexSwitchCheckDefault">Es un idioma</label>
                 </div>
@@ -100,7 +100,7 @@
         </form>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="editar(addSkill)"><i
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="edit(addSkill)"><i
                 class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</button>
     </div>
 
