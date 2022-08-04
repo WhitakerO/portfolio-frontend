@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AboutusService } from 'src/app/Service/aboutus.service';
-import { Aboutus } from 'src/app/Classes/Aboutus';
+import { Aboutus } from 'src/app/model/Aboutus';
 
 @Component({
   selector: 'app-footer',

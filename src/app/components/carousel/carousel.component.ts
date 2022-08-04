@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 import { AboutusService } from 'src/app/Service/aboutus.service';
-import { Aboutus } from 'src/app/Classes/Aboutus';
+import { Aboutus } from 'src/app/model/Aboutus';
 
 @Component({
   selector: 'app-carousel',

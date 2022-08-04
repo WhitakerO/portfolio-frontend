@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Skill } from 'src/app/Classes/Skill';
+import { Skill } from 'src/app/model/Skill';
 import { SkillService } from 'src/app/Service/skill.service';
 import { NotificadorService } from 'src/app/Service/notificador.service';
 

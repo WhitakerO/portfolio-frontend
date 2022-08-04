@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Proyectos } from 'src/app/Classes/Proyectos';
+import { Proyectos } from 'src/app/model/Proyectos';
 import { ProyectosService } from 'src/app/Service/proyectos.service';
 import { NotificadorService } from 'src/app/Service/notificador.service';
 
