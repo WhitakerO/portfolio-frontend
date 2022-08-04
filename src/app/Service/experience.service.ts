@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ExpLaboral } from '../Classes/ExpLaboral';
+import { Experience } from '../Classes/Experience';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ExpLaboralService {
+export class ExperienceService {
   private URL = "http://localhost:8080/api/explaboral/obtener";
 
   constructor(private httpClient:HttpClient) { }
 
-  getExpLaboral(): Observable<ExpLaboral[]> {
-    return this.httpClient.get<ExpLaboral[]>(this.URL);
+  getExperience(): Observable<Experience[]> {
+    return this.httpClient.get<Experience[]>(this.URL);
   }
-  deleteExpLaboral(id:number) {
+  deleteExperience(id:number) {
     return this.httpClient.post(`http://localhost:8080/api/explaboral/eliminar/${id}`, {});
   }
-  agregarExpLaboral(f : ExpLaboral) {
-    return this.httpClient.post<ExpLaboral>(`http://localhost:8080/api/explaboral/agregar/`, f).subscribe( 
+  agregarExperience(f : Experience) {
+    return this.httpClient.post<Experience>(`http://localhost:8080/api/explaboral/agregar/`, f).subscribe( 
       res=> { console.log(`Se metió el objeto ${f}`) } 
     );
   }

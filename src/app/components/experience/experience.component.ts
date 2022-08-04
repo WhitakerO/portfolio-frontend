@@ -1,8 +1,8 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ExpLaboral } from 'src/app/Classes/ExpLaboral';
-import { ExpLaboralService } from 'src/app/Service/explaboral.service';
+import { Experience } from 'src/app/Classes/Experience';
+import { ExperienceService } from 'src/app/Service/experience.service';
 import { NotificadorService } from 'src/app/Service/notificador.service';
 
 @Component({
@@ -13,41 +13,41 @@ import { NotificadorService } from 'src/app/Service/notificador.service';
 export class ExperienceComponent implements OnInit {
 
   closeResult = '';
-  addExp = new ExpLaboral;
-  expLaboralInfo: ExpLaboral[];
+  addExperience = new Experience;
+  experienceInfo: Experience[];
 
-  constructor(private expLaboralService: ExpLaboralService, private notificador: NotificadorService, private modalService: NgbModal) { }
+  constructor(private experienceService: ExperienceService, private notificador: NotificadorService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.getExpLaboral();
+    this.getExperience();
   }
-  getExpLaboral() {
-    this.expLaboralService.getExpLaboral().subscribe(response => {
-      return this.expLaboralInfo = response;
+  getExperience() {
+    this.experienceService.getExperience().subscribe(response => {
+      return this.experienceInfo = response;
     })
   }
-  borrarExp(id: number) {
-    return this.expLaboralService.deleteExpLaboral(id).subscribe(
+  deleteExperience(id: number) {
+    return this.experienceService.deleteExperience(id).subscribe(
       res => { this.ngOnInit(), this.notificador.mostrarNotificacion("Experiencia borrada correctamente.", "Cerrar") }
     );
   }
   
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.expLaboralInfo, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.experienceInfo, event.previousIndex, event.currentIndex);
     console.log(event.previousIndex)
     console.log(event.currentIndex)
   }
 
   open(content: any) {
-    this.addExp = new ExpLaboral;
+    this.addExperience = new Experience;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
-  editBtn(content: any, exp: ExpLaboral) {
-    this.addExp = exp;
+  editBtn(content: any, exp: Experience) {
+    this.addExperience = exp;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
       this.ngOnInit();
@@ -65,15 +65,15 @@ export class ExperienceComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-  guardar(e: ExpLaboral) {
-    this.expLaboralService.agregarExpLaboral(e);
+  save(e: Experience) {
+    this.experienceService.agregarExperience(e);
     this.notificador.mostrarNotificacion("Has creado una nueva experiencia.", "Cerrar");
     this.modalService.dismissAll();
     return this.ngOnInit();
   }
-  editar(e: ExpLaboral) {
+  edit(e: Experience) {
     this.modalService.dismissAll()
-    this.expLaboralService.agregarExpLaboral(e);
+    this.experienceService.agregarExperience(e);
     this.notificador.mostrarNotificacion("Has editado con éxito esta experiencia.", "Cerrar");
     return this.ngOnInit();
   }
