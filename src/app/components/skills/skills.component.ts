@@ -28,13 +28,12 @@ export class SkillsComponent implements OnInit {
   getSkill() {
     this.skillService.getSkill().subscribe(response => {
       this.skillsInfo = response;
-      for (let skill of this.skillsInfo) {
+      this.skillsInfo.forEach((skill) => {
         if(skill.islanguage) {
-          this.languageInfoArray.push(skill);
-        } else {
-          this.skillsInfoArray.push(skill);
+          this.languageInfoArray = this.skillsInfo.filter((skill) => skill.islanguage);
+          this.skillsInfoArray = this.skillsInfo.filter((skill) => !skill.islanguage)
         }
-      }
+      })
     })
   }
 
