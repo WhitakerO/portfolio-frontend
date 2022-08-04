@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Proyectos } from 'src/app/model/Proyectos';
-import { ProyectosService } from 'src/app/Service/proyectos.service';
-import { NotificadorService } from 'src/app/Service/notificador.service';
+import { ProyectosService } from 'src/app/services/proyectos.service';
+import { NotificadorService } from 'src/app/services/notificador.service';
 
 @Component({
   selector: 'app-projects',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AboutusService } from 'src/app/Service/aboutus.service';
+import { AboutusService } from 'src/app/services/aboutus.service';
 import { Aboutus } from 'src/app/model/Aboutus';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { NotificadorService } from 'src/app/Service/notificador.service';
+import { NotificadorService } from 'src/app/services/notificador.service';
 import { FooterComponent } from '../footer/footer.component';
 
 

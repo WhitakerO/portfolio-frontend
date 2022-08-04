@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
-import { AboutusService } from 'src/app/Service/aboutus.service';
+import { AboutusService } from 'src/app/services/aboutus.service';
 import { Aboutus } from 'src/app/model/Aboutus';
 
 @Component({

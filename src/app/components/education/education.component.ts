@@ -2,8 +2,8 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Education } from 'src/app/model/Education';
-import { EducationService } from 'src/app/Service/education.service';
-import { NotificadorService } from 'src/app/Service/notificador.service';
+import { EducationService } from 'src/app/services/education.service';
+import { NotificadorService } from 'src/app/services/notificador.service';
 
 @Component({
   selector: 'app-education',

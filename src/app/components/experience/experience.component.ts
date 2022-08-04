@@ -2,8 +2,8 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Experience } from 'src/app/model/Experience';
-import { ExperienceService } from 'src/app/Service/experience.service';
-import { NotificadorService } from 'src/app/Service/notificador.service';
+import { ExperienceService } from 'src/app/services/experience.service';
+import { NotificadorService } from 'src/app/services/notificador.service';
 
 @Component({
   selector: 'app-experience',
