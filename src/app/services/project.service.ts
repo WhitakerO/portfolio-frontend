@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Proyectos } from '../model/Proyectos';
+import { Project } from '../model/Project';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProyectosService {
+export class ProjectService {
 
   private URL = "http://localhost:8080/api/proyecto/obtener";
 
   constructor(private httpClient:HttpClient) { }
 
-  getProyectos(): Observable<Proyectos[]> {
-    return this.httpClient.get<Proyectos[]>(this.URL);
+  getProject(): Observable<Project[]> {
+    return this.httpClient.get<Project[]>(this.URL);
   }
-  deleteProyectos(id:number) {
+  deleteProject(id:number) {
     return this.httpClient.post(`http://localhost:8080/api/proyecto/eliminar/${id}`, {});
   }
-  agregarProyectos(f : Proyectos) {
-    return this.httpClient.post<Proyectos>(`http://localhost:8080/api/proyecto/agregar/`, f).subscribe( 
+  addProject(f : Project) {
+    return this.httpClient.post<Project>(`http://localhost:8080/api/proyecto/agregar/`, f).subscribe( 
       res=> { console.log(`Se metió el objeto ${f}`) } 
     );
   }

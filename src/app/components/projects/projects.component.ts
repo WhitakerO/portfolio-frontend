@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Proyectos } from 'src/app/model/Proyectos';
-import { ProyectosService } from 'src/app/services/proyectos.service';
+import { Project } from 'src/app/model/Project';
+import { ProjectService } from 'src/app/services/project.service';
 import { NotificadorService } from 'src/app/services/notificador.service';
 
 @Component({
@@ -12,36 +12,36 @@ import { NotificadorService } from 'src/app/services/notificador.service';
 export class ProjectsComponent implements OnInit {
 
   closeResult = '';
-  addProyecto = new Proyectos;
-  proyectosInfo: Proyectos[];
+  addProject = new Project;
+  projectInfo: Project[];
 
-  constructor(private proyectosService: ProyectosService, private notificador: NotificadorService, private modalService: NgbModal) { }
+  constructor(private projectService: ProjectService, private notificador: NotificadorService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.getProyectos();
+    this.getProject();
   }
-  getProyectos() {
-    this.proyectosService.getProyectos().subscribe(response => {
-      return this.proyectosInfo = response;
+  getProject() {
+    this.projectService.getProject().subscribe(response => {
+      return this.projectInfo = response;
     })
   }
-  borrarProyecto(id: number) {
-    return this.proyectosService.deleteProyectos(id).subscribe(
+  deleteProject(id: number) {
+    return this.projectService.deleteProject(id).subscribe(
       res => { this.ngOnInit(), this.notificador.mostrarNotificacion("Proyecto borrado correctamente.", "Cerrar") }
     );
   }
   
 
   open(content: any) {
-    this.addProyecto = new Proyectos;
+    this.addProject = new Project;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
-  editBtn(content: any, proy: Proyectos) {
-    this.addProyecto = proy;
+  editBtn(content: any, proy: Project) {
+    this.addProject = proy;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
       this.ngOnInit();
@@ -59,15 +59,15 @@ export class ProjectsComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-  guardar(e: Proyectos) {
-    this.proyectosService.agregarProyectos(e);
+  save(e: Project) {
+    this.projectService.addProject(e);
     this.notificador.mostrarNotificacion("Has creado un nuevo proyecto.", "Cerrar");
     this.modalService.dismissAll();
     return this.ngOnInit();
   }
-  editar(e: Proyectos) {
+  edit(e: Project) {
     this.modalService.dismissAll()
-    this.proyectosService.agregarProyectos(e);
+    this.projectService.addProject(e);
     this.notificador.mostrarNotificacion("Has editado con éxito este proyecto.", "Cerrar");
     return this.ngOnInit();
   }
