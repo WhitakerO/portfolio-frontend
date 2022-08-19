@@ -28,7 +28,11 @@ export class ExperienceComponent implements OnInit {
   }
   deleteExperience(id: number) {
     return this.experienceService.deleteExperience(id).subscribe(
-      res => { this.ngOnInit(), this.notificador.mostrarNotificacion("Experiencia borrada correctamente.", "Cerrar") }
+      res => { 
+        this.experienceInfo.filter(item => item.id == id);
+        this.notificador.mostrarNotificacion("Experiencia borrada correctamente.", "Cerrar");
+        this.ngOnInit();
+      }
     );
   }
   
@@ -66,10 +70,11 @@ export class ExperienceComponent implements OnInit {
     }
   }
   save(e: Experience) {
+    this.experienceInfo.push(e);
     this.experienceService.agregarExperience(e);
     this.notificador.mostrarNotificacion("Has creado una nueva experiencia.", "Cerrar");
     this.modalService.dismissAll();
-    return this.ngOnInit();
+    this.ngOnInit();
   }
   edit(e: Experience) {
     this.modalService.dismissAll()
