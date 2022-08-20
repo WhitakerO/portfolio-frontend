@@ -30,7 +30,7 @@ export class ExperienceComponent implements OnInit {
     return this.experienceService.deleteExperience(id).subscribe(
       res => { 
         this.experienceInfo.filter(item => item.id == id);
-        this.notificador.mostrarNotificacion("Experiencia borrada correctamente.", "Cerrar");
+        this.notificador.showNotification("Experiencia borrada correctamente.", "Cerrar");
         this.ngOnInit();
       }
     );
@@ -71,20 +71,19 @@ export class ExperienceComponent implements OnInit {
   }
   save(e: Experience) {
     this.experienceInfo.push(e);
-    this.experienceService.agregarExperience(e);
-    this.notificador.mostrarNotificacion("Has creado una nueva experiencia.", "Cerrar");
+    this.experienceService.addExperience(e);
+    this.notificador.showNotification("Has creado una nueva experiencia.", "Cerrar");
     this.modalService.dismissAll();
     this.ngOnInit();
   }
   edit(e: Experience) {
     this.modalService.dismissAll()
-    this.experienceService.agregarExperience(e);
-    this.notificador.mostrarNotificacion("Has editado con éxito esta experiencia.", "Cerrar");
+    this.experienceService.addExperience(e);
+    this.notificador.showNotification("Has editado con éxito esta experiencia.", "Cerrar");
     this.experienceInfo.forEach(item => {
       if(item.id == e.id) {
         item = e;
       }
-      console.log("a")
     })
   }
 

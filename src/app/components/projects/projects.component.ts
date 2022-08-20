@@ -27,7 +27,7 @@ export class ProjectsComponent implements OnInit {
   }
   deleteProject(id: number) {
     return this.projectService.deleteProject(id).subscribe(
-      res => { this.ngOnInit(), this.notificador.mostrarNotificacion("Proyecto borrado correctamente.", "Cerrar") }
+      res => { this.ngOnInit(), this.notificador.showNotification("Proyecto borrado correctamente.", "Cerrar") }
     );
   }
   
@@ -61,14 +61,14 @@ export class ProjectsComponent implements OnInit {
   }
   save(e: Project) {
     this.projectService.addProject(e);
-    this.notificador.mostrarNotificacion("Has creado un nuevo proyecto.", "Cerrar");
+    this.notificador.showNotification("Has creado un nuevo proyecto.", "Cerrar");
     this.modalService.dismissAll();
     return this.ngOnInit();
   }
   edit(e: Project) {
     this.modalService.dismissAll()
     this.projectService.addProject(e);
-    this.notificador.mostrarNotificacion("Has editado con éxito este proyecto.", "Cerrar");
+    this.notificador.showNotification("Has editado con éxito este proyecto.", "Cerrar");
     return this.ngOnInit();
   }
 

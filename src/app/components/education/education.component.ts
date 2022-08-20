@@ -30,7 +30,7 @@ export class EducationComponent implements OnInit {
 
   deleteEducation(id: number) {
     return this.educationService.deleteEducation(id).subscribe(
-      res => { this.ngOnInit(), this.notificador.mostrarNotificacion("Tarjeta de educación borrada correctamente.", "Cerrar") }
+      res => { this.ngOnInit(), this.notificador.showNotification("Tarjeta de educación borrada correctamente.", "Cerrar") }
     );
   }
   
@@ -69,14 +69,14 @@ export class EducationComponent implements OnInit {
   save(e: Education) {
     this.modalService.dismissAll();
     this.educationService.addEducation(e);
-    this.notificador.mostrarNotificacion("Has creado una nueva tarjeta de educación.", "Cerrar");
+    this.notificador.showNotification("Has creado una nueva tarjeta de educación.", "Cerrar");
     return this.ngOnInit();
   }
 
   edit(e: Education) {
     this.modalService.dismissAll();
     this.educationService.addEducation(e);
-    this.notificador.mostrarNotificacion("Has editado con éxito esta tarjeta de educación.", "Cerrar");
+    this.notificador.showNotification("Has editado con éxito esta tarjeta de educación.", "Cerrar");
   }
 
 }

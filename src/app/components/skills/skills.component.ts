@@ -36,7 +36,7 @@ export class SkillsComponent implements OnInit {
 
   deleteSkill(id: number) {
     return this.skillService.deleteSkill(id).subscribe(
-      res => { this.ngOnInit(), this.notificador.mostrarNotificacion("Habilidad borrada correctamente.", "Cerrar") }
+      res => { this.ngOnInit(), this.notificador.showNotification("Habilidad borrada correctamente.", "Cerrar") }
     );
   }
 
@@ -72,7 +72,7 @@ export class SkillsComponent implements OnInit {
 
   save(e: Skill) {
     this.skillService.addSkill(e);
-    this.notificador.mostrarNotificacion("Has creado una nueva habilidad.", "Cerrar");
+    this.notificador.showNotification("Has creado una nueva habilidad.", "Cerrar");
     this.modalService.dismissAll();
     return this.ngOnInit();
   }
@@ -89,7 +89,7 @@ export class SkillsComponent implements OnInit {
   edit(e: Skill) {
     this.modalService.dismissAll()
     this.skillService.addSkill(e);
-    this.notificador.mostrarNotificacion("Has editado con éxito esta habilidad.", "Cerrar");
+    this.notificador.showNotification("Has editado con éxito esta habilidad.", "Cerrar");
     return this.ngOnInit();
   }
 

@@ -30,7 +30,7 @@ export class AboutusComponent implements OnInit {
   save(a: Aboutus) {
     this.modalService.dismissAll();
     this.aboutusService.saveAboutus(a);
-    this.notifier.mostrarNotificacion("Has guardado tu información personal.", "Cerrar");
+    this.notifier.showNotification("Has guardado tu información personal.", "Cerrar");
   }
   open(content: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
