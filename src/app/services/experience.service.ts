@@ -17,9 +17,14 @@ export class ExperienceService {
   deleteExperience(id:number) {
     return this.httpClient.post(`http://localhost:8080/api/explaboral/eliminar/${id}`, {});
   }
-  addExperience(f : Experience) {
-    return this.httpClient.post<Experience>(`http://localhost:8080/api/explaboral/agregar/`, f).subscribe( 
-      res=> { console.log(`Se metió el objeto ${f}`) } 
+  addExperience(expObject : Experience) {
+    return this.httpClient.post<Experience>(`http://localhost:8080/api/explaboral/agregar/`, expObject).subscribe( 
+      res=> { console.log(`Se metió el objeto ${expObject}`) } 
+    );
+  }
+  saveExperience(expObject : Experience) {
+    return this.httpClient.put<Experience>(`http://localhost:8080/api/explaboral/guardar/`, expObject).subscribe( 
+      res=> { console.log(`Se metió el objeto ${expObject}`) } 
     );
   }
 

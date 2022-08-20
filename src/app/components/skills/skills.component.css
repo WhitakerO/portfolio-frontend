@@ -1,3 +1,12 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Poppins', sans-serif;
+}
+
 .skills {
     background-color: var(--main-color);
     padding-top: 5%;
@@ -9,19 +18,23 @@
     padding-bottom: 3%;
     font-size: 40px;
 }
+
 .bar {
     position: absolute;
     top: -20px;
     width: 80%;
 }
+
 .card-details {
     margin-top: 10px;
     clear: right;
     vertical-align: middle;
 }
+
 .card-details h2 {
     padding-bottom: 15px;
 }
+
 .card img {
     margin-right: 3%;
     position: absolute;
@@ -31,7 +44,8 @@
     filter: grayscale(100%);
     transition: filter 0.5s ease-in 0s;
 }
-.card:hover img{
+
+.card:hover img {
     -webkit-filter: grayscale(0%);
     filter: grayscale(0%);
 }
@@ -68,13 +82,15 @@
     bottom: -25px;
     right: 60px;
 }
+
 @-webkit-keyframes animate-positive {
-    0%{
+    0% {
         width: 0;
     }
 }
+
 @keyframes animate-positive {
-    0%{
+    0% {
         width: 0;
     }
 }
@@ -119,7 +135,7 @@
     transition: transform .5s ease-in-out;
 }
 
-.card-language { 
+.card-language {
     background-color: rgb(58, 73, 83);
 }
 

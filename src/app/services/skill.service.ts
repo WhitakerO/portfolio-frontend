@@ -18,9 +18,14 @@ export class SkillService {
   deleteSkill(id:number) {
     return this.httpClient.post(`http://localhost:8080/api/habilidad/eliminar/${id}`, {});
   }
-  addSkill(f : Skill) {
-    return this.httpClient.post<Skill>(`http://localhost:8080/api/habilidad/agregar/`, f).subscribe( 
-      res=> { console.log(`Se metió el objeto ${f}`) } 
+  addSkill(skillObject : Skill) {
+    return this.httpClient.post<Skill>(`http://localhost:8080/api/habilidad/agregar/`, skillObject).subscribe( 
+      res=> { console.log(`Se metió el objeto ${skillObject}`) } 
+    );
+  }
+  saveSkill(skillObject : Skill) {
+    return this.httpClient.put<Skill>(`http://localhost:8080/api/habilidad/guardar/`, skillObject).subscribe( 
+      res=> { console.log(`Se metió el objeto ${skillObject}`) } 
     );
   }
 }

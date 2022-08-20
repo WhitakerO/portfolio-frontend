@@ -18,9 +18,14 @@ export class ProjectService {
   deleteProject(id:number) {
     return this.httpClient.post(`http://localhost:8080/api/proyecto/eliminar/${id}`, {});
   }
-  addProject(f : Project) {
-    return this.httpClient.post<Project>(`http://localhost:8080/api/proyecto/agregar/`, f).subscribe( 
-      res=> { console.log(`Se metió el objeto ${f}`) } 
+  addProject(projectObject : Project) {
+    return this.httpClient.post<Project>(`http://localhost:8080/api/proyecto/agregar/`, projectObject).subscribe( 
+      res=> { console.log(`Se metió el objeto ${projectObject}`) } 
+    );
+  }
+  saveProject(projectObject : Project) {
+    return this.httpClient.put<Project>(`http://localhost:8080/api/proyecto/guardar/`, projectObject).subscribe( 
+      res=> { console.log(`Se metió el objeto ${projectObject}`) } 
     );
   }
 }

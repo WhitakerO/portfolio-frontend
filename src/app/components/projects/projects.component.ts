@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Project } from 'src/app/model/Project';
 import { ProjectService } from 'src/app/services/project.service';
-import { NotificadorService } from 'src/app/services/notificador.service';
+import { NotifierService } from 'src/app/services/notifier.service';
 
 @Component({
   selector: 'app-projects',
@@ -15,7 +15,7 @@ export class ProjectsComponent implements OnInit {
   addProject = new Project;
   projectInfo: Project[];
 
-  constructor(private projectService: ProjectService, private notificador: NotificadorService, private modalService: NgbModal) { }
+  constructor(private projectService: ProjectService, private notifier: NotifierService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getProject();
@@ -27,7 +27,7 @@ export class ProjectsComponent implements OnInit {
   }
   deleteProject(id: number) {
     return this.projectService.deleteProject(id).subscribe(
-      res => { this.ngOnInit(), this.notificador.showNotification("Proyecto borrado correctamente.", "Cerrar") }
+      res => { this.ngOnInit(), this.notifier.showNotification("Proyecto borrado correctamente.", "Cerrar") }
     );
   }
   
@@ -44,32 +44,24 @@ export class ProjectsComponent implements OnInit {
     this.addProject = proy;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
-      this.ngOnInit();
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      this.ngOnInit();
     });
   }
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
-  save(e: Project) {
-    this.projectService.addProject(e);
-    this.notificador.showNotification("Has creado un nuevo proyecto.", "Cerrar");
-    this.modalService.dismissAll();
-    return this.ngOnInit();
-  }
-  edit(e: Project) {
-    this.modalService.dismissAll()
-    this.projectService.addProject(e);
-    this.notificador.showNotification("Has editado con éxito este proyecto.", "Cerrar");
-    return this.ngOnInit();
-  }
+  private getDismissReason(reason: any) {
+    console.log(reason)
+    if(reason != undefined) return this.ngOnInit();
+}
 
+  save(projectObject: Project) {
+    this.projectInfo.push(projectObject);
+    this.projectService.addProject(projectObject);
+    this.notifier.showNotification("Has creado un nuevo proyecto.", "Cerrar");
+    this.modalService.dismissAll();
+  }
+  edit(projectObject: Project) {
+    this.modalService.dismissAll();
+    this.notifier.showNotification("Has editado con éxito este proyecto.", "Cerrar");
+    this.projectService.saveProject(projectObject);
+  }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AboutusService } from 'src/app/services/aboutus.service';
 import { Aboutus } from 'src/app/model/Aboutus';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { NotificadorService } from 'src/app/services/notificador.service';
+import { NotifierService } from 'src/app/services/notifier.service';
 import { FooterComponent } from '../footer/footer.component';
 
 
@@ -17,7 +17,7 @@ export class AboutusComponent implements OnInit {
   aboutInfo: Aboutus;
   closeResult = "";
 
-  constructor(private notifier:NotificadorService, private modalService: NgbModal, private aboutusService: AboutusService) { }
+  constructor(private notifier:NotifierService, private modalService: NgbModal, private aboutusService: AboutusService) { }
   
   ngOnInit(): void {
     this.getAboutus();
@@ -39,13 +39,7 @@ export class AboutusComponent implements OnInit {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
+  private getDismissReason(reason: any) {
+    if(reason != undefined) return this.ngOnInit();
+}
 }

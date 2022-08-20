@@ -18,9 +18,14 @@ export class EducationService {
   deleteEducation(id:number) {
     return this.httpClient.post(`http://localhost:8080/api/educacion/eliminar/${id}`, {});
   }
-  addEducation(f : Education) {
-    return this.httpClient.post<Education>(`http://localhost:8080/api/educacion/agregar/`, f).subscribe( 
-      res=> { console.log(`Se metió el objeto ${f}`) } 
+  addEducation(educationObject : Education) {
+    return this.httpClient.post<Education>(`http://localhost:8080/api/educacion/agregar/`, educationObject).subscribe( 
+      res=> { console.log(`Se metió el objeto ${educationObject}`) } 
+    );
+  }
+  saveEducation(educationObject : Education) {
+    return this.httpClient.put<Education>(`http://localhost:8080/api/educacion/guardar/`, educationObject).subscribe( 
+      res=> { console.log(`Se metió el objeto ${educationObject}`) } 
     );
   }
 }

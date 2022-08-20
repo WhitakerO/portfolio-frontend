@@ -14,12 +14,12 @@
               <div class="event" data-aos="fade-up" data-aos-duration="700" *ngFor="let project of projectInfo">
                 <div class="event-date">{{project.startdate}}<br>{{project.enddate}}</div>
                 <img src="{{project.logo}}" class="timeline-img zoom-in" alt="">
-                <button type="button" class="btn btn-success btn-sm boton-editar zoom-in"
+                <button type="button" class="btn btn-success btn-sm btn-edit zoom-in"
                   (click)="editBtn(editarProyecto, project)">
                   <i class="bi bi-pencil"></i></button>
-                <button type="button" class="btn btn-danger btn-sm boton-eliminar zoom-in"
+                <button type="button" class="btn btn-danger btn-sm btn-delete zoom-in"
                   (click)="deleteProject(project.id)">
-                  <i class="bi bi-x-circle"></i></button>
+                  <i class="bi bi-trash3"></i></button>
                 <h2><strong>{{project.title}}</strong></h2>
                 <div class="timeline-content">
                   <p>

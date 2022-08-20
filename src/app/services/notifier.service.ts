@@ -5,7 +5,7 @@ import { bottom } from '@popperjs/core';
 @Injectable({
   providedIn: 'root'
 })
-export class NotificadorService {
+export class NotifierService {
 
   constructor(private snackBar : MatSnackBar) { }
 

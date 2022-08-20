@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Experience } from 'src/app/model/Experience';
 import { ExperienceService } from 'src/app/services/experience.service';
-import { NotificadorService } from 'src/app/services/notificador.service';
+import { NotifierService } from 'src/app/services/notifier.service';
 
 @Component({
   selector: 'app-experience',
@@ -16,7 +16,7 @@ export class ExperienceComponent implements OnInit {
   addExperience = new Experience;
   experienceInfo: Experience[];
 
-  constructor(private experienceService: ExperienceService, private notificador: NotificadorService, private modalService: NgbModal) { }
+  constructor(private experienceService: ExperienceService, private notifier: NotifierService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getExperience();
@@ -30,7 +30,7 @@ export class ExperienceComponent implements OnInit {
     return this.experienceService.deleteExperience(id).subscribe(
       res => { 
         this.experienceInfo.filter(item => item.id == id);
-        this.notificador.showNotification("Experiencia borrada correctamente.", "Cerrar");
+        this.notifier.showNotification("Experiencia borrada correctamente.", "Cerrar");
         this.ngOnInit();
       }
     );
@@ -54,37 +54,23 @@ export class ExperienceComponent implements OnInit {
     this.addExperience = exp;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
-      this.ngOnInit();
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      this.ngOnInit();
     });
   }
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
+  private getDismissReason(reason: any) {
+      if(reason != undefined) return this.ngOnInit();
   }
-  save(e: Experience) {
-    this.experienceInfo.push(e);
-    this.experienceService.addExperience(e);
-    this.notificador.showNotification("Has creado una nueva experiencia.", "Cerrar");
+  save(expObject: Experience) {
+    this.experienceInfo.push(expObject);
+    this.experienceService.addExperience(expObject);
+    this.notifier.showNotification("Has creado una nueva experiencia.", "Cerrar");
     this.modalService.dismissAll();
-    this.ngOnInit();
   }
-  edit(e: Experience) {
-    this.modalService.dismissAll()
-    this.experienceService.addExperience(e);
-    this.notificador.showNotification("Has editado con éxito esta experiencia.", "Cerrar");
-    this.experienceInfo.forEach(item => {
-      if(item.id == e.id) {
-        item = e;
-      }
-    })
+  edit(expObject: Experience) {
+    this.modalService.dismissAll();
+    this.notifier.showNotification("Has editado con éxito esta experiencia.", "Cerrar");
+    this.experienceService.saveExperience(expObject);
   }
 
 }

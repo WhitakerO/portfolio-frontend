@@ -3,7 +3,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Skill } from 'src/app/model/Skill';
 import { SkillService } from 'src/app/services/skill.service';
-import { NotificadorService } from 'src/app/services/notificador.service';
+import { NotifierService } from 'src/app/services/notifier.service';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class SkillsComponent implements OnInit {
   skillsInfoArray: Skill[] = [];
   languageInfoArray: Skill[] = [];
 
-  constructor(private skillService: SkillService, private notificador: NotificadorService, private modalService: NgbModal) { }
+  constructor(private skillService: SkillService, private notifier: NotifierService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getSkill();
@@ -36,7 +36,7 @@ export class SkillsComponent implements OnInit {
 
   deleteSkill(id: number) {
     return this.skillService.deleteSkill(id).subscribe(
-      res => { this.ngOnInit(), this.notificador.showNotification("Habilidad borrada correctamente.", "Cerrar") }
+      res => { this.ngOnInit(), this.notifier.showNotification("Habilidad borrada correctamente.", "Cerrar") }
     );
   }
 
@@ -60,22 +60,9 @@ export class SkillsComponent implements OnInit {
     });
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
-
-  save(e: Skill) {
-    this.skillService.addSkill(e);
-    this.notificador.showNotification("Has creado una nueva habilidad.", "Cerrar");
-    this.modalService.dismissAll();
-    return this.ngOnInit();
-  }
+  private getDismissReason(reason: any) {
+    if(reason != undefined) return this.ngOnInit();
+}
 
   isLanguage(event:any) {
     if (event.target.checked) {
@@ -86,11 +73,22 @@ export class SkillsComponent implements OnInit {
     }
   }
 
-  edit(e: Skill) {
-    this.modalService.dismissAll()
-    this.skillService.addSkill(e);
-    this.notificador.showNotification("Has editado con éxito esta habilidad.", "Cerrar");
-    return this.ngOnInit();
+  save(skillObject: Skill) {
+    if(skillObject.islanguage)
+    {
+      this.languageInfoArray.push(skillObject);
+      this.notifier.showNotification("Has agregado un nuevo lenguaje.", "Cerrar");
+    } else {
+      this.skillsInfoArray.push(skillObject);
+      this.notifier.showNotification("Has agregado una nueva habilidad.", "Cerrar");
+    }
+    this.skillService.addSkill(skillObject);
+    this.modalService.dismissAll();
+  }
+  edit(skillObject: Skill) {
+    this.modalService.dismissAll();
+    this.notifier.showNotification("Has editado con éxito esta habilidad.", "Cerrar");
+    this.skillService.saveSkill(skillObject);
   }
 
 }

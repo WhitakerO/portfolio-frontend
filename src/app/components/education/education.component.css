@@ -1,5 +1,10 @@
-h1, h2, h3, h4, h5, h6 { 
-  font-family: 'Poppins', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Poppins', sans-serif;
 }
 .education {
     background-color: var(--main-color);
@@ -62,13 +67,13 @@ body{
 .card-header:first-child {
     border-radius: calc(8px - 1px) calc(8px - 1px) 0 0;
 }
-.boton-editar {
+.btn-edit {
     position: absolute;
     top: 10px;
     left: 80%;
     border-radius: 50%;
 }
-.boton-eliminar {
+.btn-delete {
     position: absolute;
     top: 10px;
     left: 90%;

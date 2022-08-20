@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Education } from 'src/app/model/Education';
 import { EducationService } from 'src/app/services/education.service';
-import { NotificadorService } from 'src/app/services/notificador.service';
+import { NotifierService } from 'src/app/services/notifier.service';
 
 @Component({
   selector: 'app-education',
@@ -16,7 +16,7 @@ export class EducationComponent implements OnInit {
   addEducation = new Education;
   educationInfo: Education[];
 
-  constructor(private educationService: EducationService, private notificador: NotificadorService, private modalService: NgbModal) { }
+  constructor(private educationService: EducationService, private notifier: NotifierService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getEducation();
@@ -30,10 +30,10 @@ export class EducationComponent implements OnInit {
 
   deleteEducation(id: number) {
     return this.educationService.deleteEducation(id).subscribe(
-      res => { this.ngOnInit(), this.notificador.showNotification("Tarjeta de educación borrada correctamente.", "Cerrar") }
+      res => { this.ngOnInit(), this.notifier.showNotification("Tarjeta de educación borrada correctamente.", "Cerrar") }
     );
   }
-  
+
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.educationInfo, event.previousIndex, event.currentIndex);
     console.log(event.previousIndex)
@@ -55,28 +55,20 @@ export class EducationComponent implements OnInit {
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
-    
-  }
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
-  save(e: Education) {
-    this.modalService.dismissAll();
-    this.educationService.addEducation(e);
-    this.notificador.showNotification("Has creado una nueva tarjeta de educación.", "Cerrar");
-    return this.ngOnInit();
-  }
 
-  edit(e: Education) {
-    this.modalService.dismissAll();
-    this.educationService.addEducation(e);
-    this.notificador.showNotification("Has editado con éxito esta tarjeta de educación.", "Cerrar");
   }
-
+  private getDismissReason(reason: any) {
+    if (reason != undefined) return this.ngOnInit();
+  }
+  save(educationObject: Education) {
+    this.educationInfo.push(educationObject);
+    this.educationService.addEducation(educationObject);
+    this.notifier.showNotification("Has creado una nueva tarjeta de educación.", "Cerrar");
+    this.modalService.dismissAll();
+  }
+  edit(educationObject: Education) {
+    this.modalService.dismissAll();
+    this.notifier.showNotification("Has editado con éxito esta tarjeta de educación.", "Cerrar");
+    this.educationService.saveEducation(educationObject);
+  }
 }
