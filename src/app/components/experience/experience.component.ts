@@ -80,7 +80,12 @@ export class ExperienceComponent implements OnInit {
     this.modalService.dismissAll()
     this.experienceService.agregarExperience(e);
     this.notificador.mostrarNotificacion("Has editado con éxito esta experiencia.", "Cerrar");
-    return this.ngOnInit();
+    this.experienceInfo.forEach(item => {
+      if(item.id == e.id) {
+        item = e;
+      }
+      console.log("a")
+    })
   }
 
 }
