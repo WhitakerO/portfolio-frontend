@@ -1,12 +1,12 @@
 <ngb-carousel class="carousel">
-  <ng-template ngbSlide *ngIf="aboutInfo.carouselimg1">
+  <ng-template ngbSlide *ngIf="aboutInfo?.carouselimg1">
     <div class="picsum-img-wrapper">
       <div class="imagen">
         <img src="{{aboutInfo.carouselimg1}}" alt="Primera imagen">
       </div>
     </div>
   </ng-template>
-  <ng-template ngbSlide *ngIf="aboutInfo.carouselimg2">
+  <ng-template ngbSlide *ngIf="aboutInfo?.carouselimg2">
     <div class="picsum-img-wrapper">
       <div class="imagen">
         <img src="{{aboutInfo.carouselimg2}}" alt="Segunda imagen">

@@ -19,6 +19,18 @@ h6 {
     font-size: 40px;
 }
 
+.btn-delete {
+    position: absolute;
+    left: 73%;
+    border-radius: 50%;
+}
+
+.btn-edit {
+    position: absolute;
+    left: 66%;
+    border-radius: 50%;
+}
+
 .bar {
     position: absolute;
     top: -20px;

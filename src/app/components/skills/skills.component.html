@@ -11,12 +11,20 @@
                 <div class="col-lg-6 col-sm-12" *ngFor="let skill of skillsInfoArray">
                     <div class="card">
                         <div class="card-details">
+                            <button type="button" class="btn btn-success btn-sm btn-edit zoom-in"
+                                (click)="editBtn(editSkill, skill)">
+                                <i class="bi bi-pencil"></i></button>
+                            <button type="button" class="btn btn-danger btn-sm btn-delete zoom-in"
+                                (click)="deleteSkill(skill.id)">
+                                <i class="bi bi-trash3"></i></button>
                             <img *ngIf="skill.image" src="{{skill.image}}" class="card-img" alt="Imagen">
                             <h2>{{skill.name}}</h2>
-                            
+
                         </div>
-                        <div class="progress bar" #tooltip="matTooltip" matTooltip="{{skill.percentage}}%" matTooltipPosition="above">
-                            <div class="progress-bar" [style.width.%]=skill.percentage style="background: #0074b7" ></div>
+                        <div class="progress bar" #tooltip="matTooltip" matTooltip="{{skill.percentage}}%"
+                            matTooltipPosition="above">
+                            <div class="progress-bar" [style.width.%]=skill.percentage style="background: #0074b7">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -26,12 +34,20 @@
                 <div class="col-lg-6 col-sm-12" *ngFor="let language of languageInfoArray">
                     <div class="card">
                         <div class="card-details">
+                            <button type="button" class="btn btn-success btn-sm btn-edit zoom-in"
+                                (click)="editBtn(editSkill, language)">
+                                <i class="bi bi-pencil"></i></button>
+                            <button type="button" class="btn btn-danger btn-sm btn-delete zoom-in"
+                                (click)="deleteSkill(language.id)">
+                                <i class="bi bi-trash3"></i></button>
                             <img *ngIf="language.image" src="{{language.image}}" class="card-img" alt="Imagen">
                             <h2>{{language.name}}</h2>
-                            
+
                         </div>
-                        <div class="progress bar" #tooltip="matTooltip" matTooltip="{{language.percentage}}%" matTooltipPosition="above">
-                            <div class="progress-bar" [style.width.%]=language.percentage style="background: #0074b7" ></div>
+                        <div class="progress bar" #tooltip="matTooltip" matTooltip="{{language.percentage}}%"
+                            matTooltipPosition="above">
+                            <div class="progress-bar" [style.width.%]=language.percentage style="background: #0074b7">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -52,8 +68,8 @@
         <form>
             <div class="mb-3">
                 <div class="form-floating mb-3">
-                    <input type="text" name="name" id="name" [(ngModel)]="addSkill.name"
-                        class="form-control rounded-3" id="floatingInput" placeholder="Coloca el nombre">
+                    <input type="text" name="name" id="name" [(ngModel)]="addSkill.name" class="form-control rounded-3"
+                        id="floatingInput" placeholder="Coloca el nombre">
                     <label for="floatingInput" *ngIf="addSkill.islanguage == false">Habilidad</label>
                     <label for="floatingInput" *ngIf="addSkill.islanguage == true">Idioma</label>
                 </div>
@@ -63,8 +79,8 @@
                     <label for="floatingInput">Porcentaje</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" name="image" id="image" class="form-control rounded-3"
-                        id="floatingInput" [(ngModel)]="addSkill.image" placeholder="Coloca el link del ícono">
+                    <input type="text" name="image" id="image" class="form-control rounded-3" id="floatingInput"
+                        [(ngModel)]="addSkill.image" placeholder="Coloca el link del ícono">
                     <label for="floatingInput">Link del ícono</label>
                 </div>
                 <div class="form-check form-switch">
@@ -101,10 +117,10 @@
                         id="floatingInput" [(ngModel)]="addSkill.percentage" placeholder="Coloca el porcentaje">
                     <label for="floatingInput">Porcentaje</label>
                 </div>
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" [(ngModel)]="addSkill.islanguage"
-                        id="flexSwitchCheckDefault">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Es un idioma</label>
+                <div class="form-floating mb-3">
+                    <input type="text" name="image" id="image" class="form-control rounded-3" id="floatingInput"
+                        [(ngModel)]="addSkill.image" placeholder="Coloca el link del ícono">
+                    <label for="floatingInput">Link del ícono</label>
                 </div>
             </div>
         </form>

@@ -53,10 +53,8 @@ export class SkillsComponent implements OnInit {
     this.addSkill = habil;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
-      this.ngOnInit();
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      this.ngOnInit();
     });
   }
 

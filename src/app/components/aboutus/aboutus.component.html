@@ -3,17 +3,17 @@
         <div class="row">
             <div class="col-sm-12 col-lg-3 info-personal">
                 <div class="img-avatar">
-                    <img *ngIf="aboutInfo.avatarimg != ''" src="{{aboutInfo.avatarimg}}" data-aos="fade-up"
+                    <img *ngIf="aboutInfo?.avatarimg" src="{{aboutInfo.avatarimg}}" data-aos="fade-up"
                         class="avatar" alt="Avatar">
                 </div>
                 <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
                     <h2 class="pt-2">
-                        <span>{{aboutInfo.name}}</span>
+                        <span *ngIf="aboutInfo?.name">{{aboutInfo.name}}</span>
                     </h2>
-                    <h3>
+                    <h3 *ngIf="aboutInfo?.title">
                         {{aboutInfo.title}}</h3>
 
-                    <a href="{{aboutInfo.cvlink}}" class="btn btn-dark btn-azul zoom-in"><i
+                    <a *ngIf="aboutInfo?.cvlink" href="{{aboutInfo.cvlink}}" class="btn btn-dark btn-azul zoom-in"><i
                             class="bi bi-download"></i>&nbsp; &nbsp;Descargar
                         CV</a>
                 </div>
@@ -24,17 +24,17 @@
                     class="btn btn-success btn-sm boton-editar zoom-in"><i class="bi bi-pencil"></i></button>
                 <h1 class="titulo">Conocé más sobre mí</h1>
                 <hr>
-                <p class="parrafo">
+                <p class="parrafo" *ngIf="aboutInfo?.aboutdescription">
                     {{aboutInfo.aboutdescription}}
                 </p>
             </div>
             <div class="col-lg-3 col-sm-12" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
                 <div class="card zoom-in">
                     <h2 class="box-personal-info-title">Información personal</h2>
-                    <p><i class="bi bi-person-fill"></i>&nbsp;&nbsp;Edad: {{aboutInfo.age}}</p>
-                    <p><i class="bi bi-person-fill"></i>&nbsp;&nbsp;Ubicación: {{aboutInfo.location}}</p>
-                    <p><i class="bi bi-person-fill"></i>&nbsp;&nbsp;Teléfono: {{aboutInfo.phone}}</p>
-                    <p><i class="bi bi-person-fill"></i>&nbsp;&nbsp;E-Mail: {{aboutInfo.email}}</p>
+                    <p *ngIf="aboutInfo?.age"><i class="bi bi-person-fill"></i>&nbsp;&nbsp;Edad: {{aboutInfo.age}}</p>
+                    <p *ngIf="aboutInfo?.location"><i class="bi bi-person-fill"></i>&nbsp;&nbsp;Ubicación: {{aboutInfo.location}}</p>
+                    <p *ngIf="aboutInfo?.phone"><i class="bi bi-person-fill"></i>&nbsp;&nbsp;Teléfono: {{aboutInfo.phone}}</p>
+                    <p *ngIf="aboutInfo?.email"><i class="bi bi-person-fill"></i>&nbsp;&nbsp;E-Mail: {{aboutInfo.email}}</p>
                 </div>
             </div>
         </div>

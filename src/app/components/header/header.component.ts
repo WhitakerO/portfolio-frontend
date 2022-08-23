@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { User } from 'src/app/model/User';
+import { LoginService } from 'src/app/services/login.service';
+import { NotifierService } from 'src/app/services/notifier.service';
 
 @Component({
   selector: 'app-header',
@@ -12,8 +15,9 @@ export class HeaderComponent implements OnInit {
   userLogin = "";
   userPassword = "";
   closeResult = "";
+  user = new User();
 
-  constructor(private modalService:NgbModal) { }
+  constructor(private notifier:NotifierService, private modalService:NgbModal, private loginService:LoginService) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +31,15 @@ export class HeaderComponent implements OnInit {
     } else {
       element.classList.remove('nav-solid');
     }
+  }
+
+  doLogin() {
+    console.info("user", this.user);
+    this.loginService.doLogin(this.user).subscribe(data => {
+      this.user.isLogged = true;
+      this.notifier.showNotification("Logueaste correctamente en tu cuenta", "Cerrar");
+    }, error => this.notifier.showNotification("User o password incorrectos", "Cerrar")
+    );
   }
 
   open(content: any) {

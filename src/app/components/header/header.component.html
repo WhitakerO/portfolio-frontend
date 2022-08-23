@@ -44,19 +44,19 @@
           <div class="mb-3 ml-5">
               <div class="form-floating mb-3">
                   <input type="text" name="user" id="user" class="form-control rounded-3"
-                      id="floatingInput" [(ngModel)]="userLogin" placeholder="Coloca el usuario">
+                      id="floatingInput" [(ngModel)]="user.username" placeholder="Coloca el usuario">
                   <label for="floatingInput">Nombre de usuario</label>
               </div>
               <div class="form-floating mb-3">
                   <input type="password" name="password" id="password" class="form-control rounded-3"
-                      id="floatingInput" [(ngModel)]="userPassword" placeholder="Coloca la contraseña">
+                      id="floatingInput" [(ngModel)]="user.password" placeholder="Coloca la contraseña">
                   <label for="floatingInput">Contraseña</label>
               </div>
           </div>
       </form>
   </div>
   <div class="modal-footer">
-      <button type="button" class="btn btn-success" data-dismiss="modal"><i
+      <button type="button" class="btn btn-success" (click)="doLogin()" data-dismiss="modal"><i
               class="bi bi-box-arrow-in-right"></i>&nbsp;&nbsp;Iniciar sesión</button>
   </div>
 </ng-template>
