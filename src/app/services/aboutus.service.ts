@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AboutusService {
-  private URL = "http://localhost:8080/api/acercade/obtener/1";
+  private URL = "https://portfolio-ow.herokuapp.com/api/acercade/obtener/1";
 
   constructor(private httpClient:HttpClient) { }
 
@@ -16,7 +16,7 @@ export class AboutusService {
   }
   saveAboutus(a : Aboutus) {
     console.log(a);
-    return this.httpClient.post<Aboutus>(`http://localhost:8080/api/acercade/guardar/`, a).subscribe( 
+    return this.httpClient.post<Aboutus>(`https://portfolio-ow.herokuapp.com/api/acercade/guardar/`, a).subscribe( 
       res=> { console.log(`Se metió el objeto ${a}`) } 
     );
   }
