@@ -2,29 +2,28 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Skill } from '../model/Skill';
 import { Observable } from 'rxjs';
+import { Config } from '../config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SkillService {
 
-  private URL = "http://localhost:8080/api/habilidad/obtener";
-
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient, private config:Config) { }
 
   getSkill(): Observable<Skill[]> {
-    return this.httpClient.get<Skill[]>(this.URL);
+    return this.httpClient.get<Skill[]>(`${this.config.backendURL}/api/habilidad/obtener`);
   }
   deleteSkill(id:number) {
-    return this.httpClient.post(`http://localhost:8080/api/habilidad/eliminar/${id}`, {});
+    return this.httpClient.delete(`${this.config.backendURL}/api/habilidad/eliminar/${id}`, {});
   }
   addSkill(skillObject : Skill) {
-    return this.httpClient.post<Skill>(`http://localhost:8080/api/habilidad/agregar/`, skillObject).subscribe( 
+    return this.httpClient.post<Skill>(`${this.config.backendURL}/api/habilidad/agregar/`, skillObject).subscribe( 
       res=> { console.log(`Se metió el objeto ${skillObject}`) } 
     );
   }
   saveSkill(skillObject : Skill) {
-    return this.httpClient.put<Skill>(`http://localhost:8080/api/habilidad/guardar/`, skillObject).subscribe( 
+    return this.httpClient.put<Skill>(`${this.config.backendURL}/api/habilidad/guardar/`, skillObject).subscribe( 
       res=> { console.log(`Se metió el objeto ${skillObject}`) } 
     );
   }

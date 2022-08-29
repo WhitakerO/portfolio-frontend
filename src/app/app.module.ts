@@ -21,7 +21,6 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { EducationComponent } from './components/education/education.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FooterComponent } from './components/footer/footer.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 
@@ -51,7 +50,6 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatMenuModule,
     MatSnackBarModule,
     FormsModule,
-    DragDropModule,
     MatProgressBarModule
   ],
   providers: [],

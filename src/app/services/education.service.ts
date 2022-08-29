@@ -2,29 +2,28 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Education } from '../model/Education';
 import { Observable } from 'rxjs';
+import { Config } from '../config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EducationService {
 
-  //private URL = "http://localhost:8080/api/educacion/obtener";
-  private URL = "https://portfolio-ow.herokuapp.com/api/educacion/obtener"
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient, private config:Config) { }
 
   getEducation(): Observable<Education[]> {
-    return this.httpClient.get<Education[]>(this.URL);
+    return this.httpClient.get<Education[]>(`${this.config.backendURL}/api/educacion/obtener`);
   }
   deleteEducation(id:number) {
-    return this.httpClient.post(`https://portfolio-ow.herokuapp.com/api/educacion/eliminar/${id}`, {});
+    return this.httpClient.delete(`${this.config.backendURL}/api/educacion/eliminar/${id}`, {});
   }
   addEducation(educationObject : Education) {
-    return this.httpClient.post<Education>(`https://portfolio-ow.herokuapp.com/api/educacion/agregar/`, educationObject).subscribe( 
+    return this.httpClient.post<Education>(`${this.config.backendURL}/api/educacion/agregar/`, educationObject).subscribe( 
       res=> { console.log(`Se metió el objeto ${educationObject}`) } 
     );
   }
   saveEducation(educationObject : Education) {
-    return this.httpClient.put<Education>(`https://portfolio-ow.herokuapp.com/api/educacion/guardar/`, educationObject).subscribe( 
+    return this.httpClient.put<Education>(`${this.config.backendURL}/api/educacion/guardar/`, educationObject).subscribe( 
       res=> { console.log(`Se metió el objeto ${educationObject}`) } 
     );
   }

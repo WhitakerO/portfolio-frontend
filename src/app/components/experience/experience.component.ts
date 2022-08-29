@@ -1,4 +1,3 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Experience } from 'src/app/model/Experience';
@@ -36,12 +35,6 @@ export class ExperienceComponent implements OnInit {
     );
   }
   
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.experienceInfo, event.previousIndex, event.currentIndex);
-    console.log(event.previousIndex)
-    console.log(event.currentIndex)
-  }
-
   open(content: any) {
     this.addExperience = new Experience;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {

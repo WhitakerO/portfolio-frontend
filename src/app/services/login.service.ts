@@ -8,7 +8,7 @@ import { User } from '../model/User';
 })
 export class LoginService {
 
-  private baseURL = "http://localhost:8080/api/login";
+  private baseURL = "https://portfolio-ow.herokuapp.com/api/login";
 
   constructor(private http:HttpClient) { }
 
