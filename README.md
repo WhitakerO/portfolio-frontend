@@ -22,6 +22,12 @@ También, podremos modificar el título del documento. Por defecto está en Nomb
 
 Para configurar el backend, debes hacer click en este link.
 
+Por último, utilizar:
+```
+ng build
+```
+Con esto, podrá buildear el proyecto y ponerlo en producción.
+
 ## Bugs conocidos
 
  - Por ausencia de Reactive Forms, algunas veces no se postea un nuevo elemento.
