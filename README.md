@@ -1,5 +1,7 @@
 # Proyecto de Portfolio: Frontend
 
+**Link demo: https://portfolio-611ec.web.app/**
+
 El siguiente proyecto está trabajado utilizando Angular, el cuál está complementado con un backend en Java (Spring Boot). Se siguieron los lineamientos y condiciones del programa Argentina Programa, desarrollado por el INTI (Instituto Nacional de Tecnología Industrial). Para acceder a estos requisitos, puedes contactarme por e-mail y con gusto me pondré en contacto con usted.
 
 ## Contenido
@@ -16,9 +18,7 @@ Para instalarlo, debes clonar el repositorio, luego editar el siguiente archivo:
 
 ### config.ts de la carpeta config
 
-En este archivo encontraremos dos variables: la primera es el URL de nuestro backend. Modificar al que corresponda.
-
-También, podremos modificar el título del documento. Por defecto está en Nombre Apellido - Portfolio.
+En este archivo encontraremos una variable: el URL de nuestro backend. Modificar al que corresponda.
 
 Para configurar el backend, debes hacer click en este link.
 
