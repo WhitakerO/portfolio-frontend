@@ -35,7 +35,6 @@ Con esto, podrá buildear el proyecto y ponerlo en producción.
  
 ## Actualizaciones pendientes
 
-- Especificar **lenght** en las tablas que requieran 
 - Introducir Reactive Forms de Angular
 - Optimizar el diseño para dispositivos móviles
 
