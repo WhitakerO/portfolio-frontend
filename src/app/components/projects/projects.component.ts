@@ -60,6 +60,7 @@ export class ProjectsComponent implements OnInit {
     this.projectService.addProject(projectObject);
     this.notifier.showNotification("Has creado un nuevo proyecto.", "Cerrar");
     this.modalService.dismissAll();
+    return this.ngOnInit();
   }
   edit(projectObject: Project) {
     this.modalService.dismissAll();

@@ -108,25 +108,25 @@
             <div class="mb-3">
                 <div class="form-floating mb-3">
                     <input type="text" name="name" id="name" class="form-control rounded-3" id="floatingInput"
-                        [(ngModel)]="addSkill.name" placeholder="Coloca el nombre">
-                    <label for="floatingInput" *ngIf="addSkill.islanguage == false">Habilidad</label>
-                    <label for="floatingInput" *ngIf="addSkill.islanguage == true">Idioma</label>
+                        [(ngModel)]="editSkillObj.name" placeholder="Coloca el nombre">
+                    <label for="floatingInput" *ngIf="editSkillObj.islanguage == false">Habilidad</label>
+                    <label for="floatingInput" *ngIf="editSkillObj.islanguage == true">Idioma</label>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="text" name="percentage" id="percentage" class="form-control rounded-3"
-                        id="floatingInput" [(ngModel)]="addSkill.percentage" placeholder="Coloca el porcentaje">
+                        id="floatingInput" [(ngModel)]="editSkillObj.percentage" placeholder="Coloca el porcentaje">
                     <label for="floatingInput">Porcentaje</label>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="text" name="image" id="image" class="form-control rounded-3" id="floatingInput"
-                        [(ngModel)]="addSkill.image" placeholder="Coloca el link del ícono">
+                        [(ngModel)]="editSkillObj.image" placeholder="Coloca el link del ícono">
                     <label for="floatingInput">Link del ícono</label>
                 </div>
             </div>
         </form>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="edit(addSkill)"><i
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="edit()"><i
                 class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</button>
     </div>
 

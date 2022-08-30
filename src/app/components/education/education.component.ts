@@ -69,6 +69,7 @@ export class EducationComponent implements OnInit {
     this.educationService.addEducation(educationObject);
     this.notifier.showNotification("Has creado una nueva tarjeta de educación.", "Cerrar");
     this.modalService.dismissAll();
+    return this.ngOnInit();
   }
   edit(educationObject: Education) {
     this.modalService.dismissAll();

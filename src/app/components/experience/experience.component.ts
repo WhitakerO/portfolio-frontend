@@ -61,6 +61,7 @@ export class ExperienceComponent implements OnInit {
     this.experienceService.addExperience(expObject);
     this.notifier.showNotification("Has creado una nueva experiencia.", "Cerrar");
     this.modalService.dismissAll();
+    return this.ngOnInit();
   }
   edit(expObject: Experience) {
     this.modalService.dismissAll();

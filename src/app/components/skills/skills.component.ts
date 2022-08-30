@@ -16,6 +16,7 @@ export class SkillsComponent implements OnInit {
 
   closeResult = '';
   addSkill = new Skill;
+  editSkillObj: Skill;
   skillsInfo: Skill[];
   skillsInfoArray: Skill[] = [];
   languageInfoArray: Skill[] = [];
@@ -51,8 +52,8 @@ export class SkillsComponent implements OnInit {
     });
   }
 
-  editBtn(content: any, habil: Skill) {
-    this.addSkill = habil;
+  editBtn(content: any, skill: Skill) {
+    this.editSkillObj = skill;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -84,11 +85,13 @@ export class SkillsComponent implements OnInit {
     }
     this.skillService.addSkill(skillObject);
     this.modalService.dismissAll();
+    return this.ngOnInit();
   }
-  edit(skillObject: Skill) {
+  edit() {
     this.modalService.dismissAll();
     this.notifier.showNotification("Has editado con éxito esta habilidad.", "Cerrar");
-    this.skillService.saveSkill(skillObject);
+    this.skillService.saveSkill(this.editSkillObj);
+    this.editSkillObj = new Skill;
   }
 
 }
