@@ -4,5 +4,5 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
   })
 export class Config {
-    backendURL = "http://localhost:8080"
+    backendURL = "https://portfolio-ow.herokuapp.com/"
 }
