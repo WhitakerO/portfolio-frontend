@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
     }
     var loggedName = sessionStorage.getItem("loggedName");
     if (loggedName) {
-        sessionStorage.removeItem("loggedOrLoggouted");
+        sessionStorage.removeItem("loggedName");
         this.notifier.showNotification(`¡Bienvenido! Has iniciado sesión como ${loggedName}.`, "Cerrar");
     }
   }
