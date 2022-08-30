@@ -3,6 +3,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Experience } from 'src/app/model/Experience';
 import { ExperienceService } from 'src/app/services/experience.service';
 import { NotifierService } from 'src/app/services/notifier.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-experience',
@@ -14,8 +15,9 @@ export class ExperienceComponent implements OnInit {
   closeResult = '';
   addExperience = new Experience;
   experienceInfo: Experience[];
+  isLogged = this.tokenService.getToken();
 
-  constructor(private experienceService: ExperienceService, private notifier: NotifierService, private modalService: NgbModal) { }
+  constructor(private tokenService:TokenService, private experienceService: ExperienceService, private notifier: NotifierService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getExperience();

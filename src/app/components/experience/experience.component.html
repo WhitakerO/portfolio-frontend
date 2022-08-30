@@ -3,7 +3,7 @@
         <div class="container" data-aos="zoom-in-right" data-aos-duration="500">
             <h1 class="titulo">Experiencia laboral</h1>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="btn btn-success zoom-in" (click)="open(addExperienceModal)"><i
+                <button *ngIf="isLogged" class="btn btn-success zoom-in" (click)="open(addExperienceModal)"><i
                         class="bi bi-plus-circle"></i>&nbsp;&nbsp;Agregar
                     experiencia</button>
             </div>
@@ -24,9 +24,9 @@
                         <div class="container descripcion">
                             <h1>{{experiencie.title}}</h1>
                             <p style="text-align: justify;">{{experiencie.description}}</p>
-                            <button type="button" (click)="editBtn(editExperienceModal, experiencie)"
+                            <button *ngIf="isLogged" type="button" (click)="editBtn(editExperienceModal, experiencie)"
                                 class="btn btn-success btn-edit zoom-in"><i class="bi bi-pencil"></i></button>
-                            <button type="button" (click)="deleteExperience(experiencie.id)"
+                            <button *ngIf="isLogged" type="button" (click)="deleteExperience(experiencie.id)"
                                 class="btn btn-danger btn-delete zoom-in"><i class="bi bi-trash3"></i></button>
                         </div>
                     </div>

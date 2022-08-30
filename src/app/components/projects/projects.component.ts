@@ -3,6 +3,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Project } from 'src/app/model/Project';
 import { ProjectService } from 'src/app/services/project.service';
 import { NotifierService } from 'src/app/services/notifier.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-projects',
@@ -14,8 +15,9 @@ export class ProjectsComponent implements OnInit {
   closeResult = '';
   addProject = new Project;
   projectInfo: Project[];
+  isLogged = this.tokenService.getToken();
 
-  constructor(private projectService: ProjectService, private notifier: NotifierService, private modalService: NgbModal) { }
+  constructor(private tokenService: TokenService, private projectService: ProjectService, private notifier: NotifierService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getProject();

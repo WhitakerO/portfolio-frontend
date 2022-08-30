@@ -4,6 +4,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Skill } from 'src/app/model/Skill';
 import { SkillService } from 'src/app/services/skill.service';
 import { NotifierService } from 'src/app/services/notifier.service';
+import { TokenService } from 'src/app/services/token.service';
 
 
 @Component({
@@ -18,8 +19,9 @@ export class SkillsComponent implements OnInit {
   skillsInfo: Skill[];
   skillsInfoArray: Skill[] = [];
   languageInfoArray: Skill[] = [];
+  isLogged = this.tokenService.getToken();
 
-  constructor(private skillService: SkillService, private notifier: NotifierService, private modalService: NgbModal) { }
+  constructor(private tokenService: TokenService, private skillService: SkillService, private notifier: NotifierService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getSkill();

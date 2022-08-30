@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { User } from 'src/app/model/User';
-import { LoginService } from 'src/app/services/login.service';
+import { LoginUsuario } from 'src/app/model/UserLogin';
 import { NotifierService } from 'src/app/services/notifier.service';
+import { TokenService } from 'src/app/services/token.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,16 +13,56 @@ import { NotifierService } from 'src/app/services/notifier.service';
 })
 export class HeaderComponent implements OnInit {
 
-  userLogin = "";
-  userPassword = "";
   closeResult = "";
-  user = new User();
+  isLogged = false;
+  isLoginFail = false;
+  loginUsuario: LoginUsuario;
+  nombreUsuario: string;
+  password: string;
+  roles: string[] = [];
+  errMsj: string;
 
-  constructor(private notifier:NotifierService, private modalService:NgbModal, private loginService:LoginService) { }
+  constructor(private tokenService: TokenService,
+    private authService: AuthService,
+    private notifier: NotifierService,
+    private modalService: NgbModal,
+  ) { }
 
   ngOnInit(): void {
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+      this.isLoginFail = false;
+      this.roles = this.tokenService.getAuthorities();
+    }
+    var loggedName = sessionStorage.getItem("loggedName");
+    if (loggedName) {
+        sessionStorage.removeItem("loggedOrLoggouted");
+        this.notifier.showNotification(`¡Bienvenido! Has iniciado sesión como ${loggedName}.`, "Cerrar");
+    }
   }
 
+  onLogin(): void {
+    this.loginUsuario = new LoginUsuario(this.nombreUsuario, this.password);
+    this.authService.login(this.loginUsuario).subscribe(
+      data => {
+        this.isLogged = true;
+        this.tokenService.setToken(data.token);
+        this.tokenService.setUserName(data.nombreUsuario);
+        this.tokenService.setAuthorities(data.authorities);
+        this.roles = data.authorities;
+        window.location.reload();
+        sessionStorage.setItem("loggedName", data.nombreUsuario);
+      },
+      err => {
+        this.isLogged = false;
+        this.errMsj = err.error.message;
+        this.notifier.showNotification(`Usuario o contraseña incorrectos.`, "Cerrar");
+      }
+    );
+  }
+  onLogout() {
+    this.tokenService.logOut();
+  }
   @HostListener('window:scroll', ['$event'])
 
   onWindowScroll() {
@@ -31,15 +72,6 @@ export class HeaderComponent implements OnInit {
     } else {
       element.classList.remove('nav-solid');
     }
-  }
-
-  doLogin() {
-    console.info("user", this.user);
-    this.loginService.doLogin(this.user).subscribe(data => {
-      this.user.isLogged = true;
-      this.notifier.showNotification("Logueaste correctamente en tu cuenta", "Cerrar");
-    }, error => this.notifier.showNotification("User o password incorrectos", "Cerrar")
-    );
   }
 
   open(content: any) {

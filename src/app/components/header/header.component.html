@@ -26,10 +26,11 @@
 
   <span class="espaciador"></span>
 
-  <button class="login iconos" #tooltip="matTooltip" (click)="open(loginModal);" matTooltip="Inicia sesión en tu cuenta" mat-mini-fab color="accent"
+  <button *ngIf="!isLogged" class="login iconos" #tooltip="matTooltip" (click)="open(loginModal);" matTooltip="Inicia sesión en tu cuenta" mat-mini-fab color="accent"
     aria-label="Iniciar sesión">
     <mat-icon>login</mat-icon>
   </button>
+  <button *ngIf="isLogged" class="btn btn-danger" (click)="onLogout()">Logout</button>
 </mat-toolbar>
 
 
@@ -44,19 +45,19 @@
           <div class="mb-3 ml-5">
               <div class="form-floating mb-3">
                   <input type="text" name="user" id="user" class="form-control rounded-3"
-                      id="floatingInput" [(ngModel)]="user.username" placeholder="Coloca el usuario">
-                  <label for="floatingInput">Nombre de usuario</label>
+                      id="userInput" [(ngModel)]="nombreUsuario" placeholder="Coloca el usuario">
+                  <label for="userInput">Nombre de usuario</label>
               </div>
               <div class="form-floating mb-3">
                   <input type="password" name="password" id="password" class="form-control rounded-3"
-                      id="floatingInput" [(ngModel)]="user.password" placeholder="Coloca la contraseña">
-                  <label for="floatingInput">Contraseña</label>
+                      id="passwordInput" [(ngModel)]="password" placeholder="Coloca la contraseña">
+                  <label for="passwordInput">Contraseña</label>
               </div>
           </div>
       </form>
   </div>
   <div class="modal-footer">
-      <button type="button" class="btn btn-success" (click)="doLogin()" data-dismiss="modal"><i
+      <button type="button" class="btn btn-success" (click)="onLogin()" data-dismiss="modal"><i
               class="bi bi-box-arrow-in-right"></i>&nbsp;&nbsp;Iniciar sesión</button>
   </div>
 </ng-template>

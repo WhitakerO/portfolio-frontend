@@ -20,7 +20,7 @@
 
             </div>
             <div class="col-lg-6 col-sm-12 info" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
-                <button type="button" (click)="open(editAboutusModal);"
+                <button *ngIf="isLogged" type="button" (click)="open(editAboutusModal);"
                     class="btn btn-success btn-sm boton-editar zoom-in"><i class="bi bi-pencil"></i></button>
                 <h1 class="titulo">Conocé más sobre mí</h1>
                 <hr>

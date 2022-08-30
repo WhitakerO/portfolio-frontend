@@ -4,7 +4,7 @@
             <h1 class="titulo">Educación</h1>
             <div class="row">
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end pb-2">
-                    <button class="btn btn-success zoom-in" (click)="open(addEducationModal)"><i
+                    <button *ngIf="isLogged" class="btn btn-success zoom-in" (click)="open(addEducationModal)"><i
                             class="bi bi-plus-circle"></i>&nbsp;&nbsp;Agregar
                         educación</button>
                 </div>
@@ -31,10 +31,11 @@
                                     <p>
                                         {{education.description}}
                                     </p>
-                                    <button type="button" (click)="editBtn(editEducationModal, education)"
+
+                                    <button *ngIf="isLogged" type="button" (click)="editBtn(editEducationModal, education)"
                                         class="btn btn-success btn-sm btn-edit zoom-in"><i
                                             class="bi bi-pencil"></i></button>
-                                    <button type="button" (click)="deleteEducation(education.id)"
+                                    <button *ngIf="isLogged" type="button" (click)="deleteEducation(education.id)"
                                         class="btn btn-danger btn-sm btn-delete zoom-in"><i
                                             class="bi bi-trash3"></i></button>
                                 </div>

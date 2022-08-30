@@ -4,6 +4,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Education } from 'src/app/model/Education';
 import { EducationService } from 'src/app/services/education.service';
 import { NotifierService } from 'src/app/services/notifier.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-education',
@@ -15,11 +16,14 @@ export class EducationComponent implements OnInit {
   closeResult = '';
   addEducation = new Education;
   educationInfo: Education[];
+  isLogged = this.tokenService.getToken();
 
-  constructor(private educationService: EducationService, private notifier: NotifierService, private modalService: NgbModal) { }
+
+  constructor(private tokenService:TokenService, private educationService: EducationService, private notifier: NotifierService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getEducation();
+    
   }
 
   getEducation() {

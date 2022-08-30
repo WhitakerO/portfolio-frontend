@@ -3,6 +3,7 @@ import { AboutusService } from 'src/app/services/aboutus.service';
 import { Aboutus } from 'src/app/model/Aboutus';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotifierService } from 'src/app/services/notifier.service';
+import { TokenService } from 'src/app/services/token.service';
 
 
 
@@ -15,11 +16,23 @@ import { NotifierService } from 'src/app/services/notifier.service';
 export class AboutusComponent implements OnInit {
   aboutInfo: Aboutus;
   closeResult = "";
+  isLogged = this.tokenService.getToken();
 
-  constructor(private notifier:NotifierService, private modalService: NgbModal, private aboutusService: AboutusService) { }
+  constructor(private tokenService:TokenService, private notifier:NotifierService, private modalService: NgbModal, private aboutusService: AboutusService) { }
   
   ngOnInit(): void {
     this.getAboutus();
+    let savingAbout = sessionStorage.getItem("savingAboutus");
+    let loggedOut = sessionStorage.getItem("loggedOut");
+    if (savingAbout) {
+        sessionStorage.removeItem("savingAboutus");
+        this.notifier.showNotification("Has guardado tu información personal.", "Cerrar");
+    }
+    if(loggedOut)
+    {
+        sessionStorage.removeItem("loggedOut");
+        this.notifier.showNotification("Has cerrado sesión satisfactoriamente.", "Cerrar");
+    }
   }
   getAboutus() {
     this.aboutusService.getAboutus().subscribe ( response =>{
@@ -29,7 +42,9 @@ export class AboutusComponent implements OnInit {
   save(a: Aboutus) {
     this.modalService.dismissAll();
     this.aboutusService.saveAboutus(a);
-    this.notifier.showNotification("Has guardado tu información personal.", "Cerrar");
+    window.location.reload();
+    sessionStorage.setItem("savingAboutus", "true");
+    
   }
   open(content: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {

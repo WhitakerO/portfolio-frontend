@@ -23,6 +23,8 @@ import { SkillsComponent } from './components/skills/skills.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { FooterComponent } from './components/footer/footer.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { DatePipe } from '@angular/common';
+import { httpInterceptorProviders } from './services/interceptor/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     FormsModule,
     MatProgressBarModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders,
+    DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

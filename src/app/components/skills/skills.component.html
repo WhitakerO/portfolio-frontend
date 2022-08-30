@@ -3,7 +3,7 @@
         <div class="container" data-aos="zoom-in-right" data-aos-duration="500">
             <h1 class="titulo">Mis habilidades</h1>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="btn btn-success zoom-in" (click)="open(addSkillModal)"><i
+                <button *ngIf="isLogged" class="btn btn-success zoom-in" (click)="open(addSkillModal)"><i
                         class="bi bi-plus-circle"></i>&nbsp;&nbsp;Agregar
                     habilidad</button>
             </div>
@@ -11,10 +11,10 @@
                 <div class="col-lg-6 col-sm-12" *ngFor="let skill of skillsInfoArray">
                     <div class="card">
                         <div class="card-details">
-                            <button type="button" class="btn btn-success btn-sm btn-edit zoom-in"
+                            <button *ngIf="isLogged" type="button" class="btn btn-success btn-sm btn-edit zoom-in"
                                 (click)="editBtn(editSkill, skill)">
                                 <i class="bi bi-pencil"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm btn-delete zoom-in"
+                            <button *ngIf="isLogged" type="button" class="btn btn-danger btn-sm btn-delete zoom-in"
                                 (click)="deleteSkill(skill.id)">
                                 <i class="bi bi-trash3"></i></button>
                             <img *ngIf="skill.image" src="{{skill.image}}" class="card-img" alt="Imagen">
@@ -34,10 +34,10 @@
                 <div class="col-lg-6 col-sm-12" *ngFor="let language of languageInfoArray">
                     <div class="card">
                         <div class="card-details">
-                            <button type="button" class="btn btn-success btn-sm btn-edit zoom-in"
+                            <button *ngIf="isLogged" type="button" class="btn btn-success btn-sm btn-edit zoom-in"
                                 (click)="editBtn(editSkill, language)">
                                 <i class="bi bi-pencil"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm btn-delete zoom-in"
+                            <button *ngIf="isLogged" type="button" class="btn btn-danger btn-sm btn-delete zoom-in"
                                 (click)="deleteSkill(language.id)">
                                 <i class="bi bi-trash3"></i></button>
                             <img *ngIf="language.image" src="{{language.image}}" class="card-img" alt="Imagen">

@@ -3,9 +3,10 @@
     z-index: 20;
 }
 
-img {
+img{
     width: 100%;
     height: auto;
+    max-height: 320px;
 }
 
 @media (max-width: 600px) {
