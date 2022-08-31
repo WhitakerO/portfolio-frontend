@@ -1,42 +1,44 @@
-<div class="acercade">
+
+
+<div [ngStyle]="{'background-image': aboutInfo.carouselimg2}" class="acercade min-vh-100 justify-content-center align-items-center d-flex">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-lg-3 info-personal">
-                <div class="img-avatar">
-                    <img *ngIf="aboutInfo?.avatarimg" src="{{aboutInfo.avatarimg}}" data-aos="fade-up"
-                        class="avatar" alt="Avatar">
-                </div>
+            <div class="col-sm-12 col-lg-12 text-center justify-content-center">         
                 <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
-                    <h2 class="pt-2">
+                    <button *ngIf="isLogged" type="button" (click)="open(editAboutusModal);"
+                class="btn btn-success boton-editar zoom-in"><i class="bi bi-pencil"></i> Editar</button>
+                    <h1>
                         <span *ngIf="aboutInfo?.name">{{aboutInfo.name}}</span>
-                    </h2>
-                    <h3 *ngIf="aboutInfo?.title">
-                        {{aboutInfo.title}}</h3>
+                    </h1>
+                    <h2 *ngIf="aboutInfo?.title">
+                        {{aboutInfo.title}}</h2>
 
-                    <a *ngIf="aboutInfo?.cvlink" href="{{aboutInfo.cvlink}}" class="btn btn-dark btn-azul zoom-in"><i
+                    <a *ngIf="aboutInfo?.cvlink" href="{{aboutInfo.cvlink}}" class="btn btn-dark button zoom-in"><i
                             class="bi bi-download"></i>&nbsp; &nbsp;Descargar
-                        CV</a>
+                        CV</a>&nbsp;
+                        <button class="btn btn-primary button zoom-in"><i
+                            class="bi bi-person"></i>&nbsp; &nbsp;Acerca de mí</button>
                 </div>
-
+                <img *ngIf="aboutInfo?.avatarimg" src="{{aboutInfo.avatarimg}}" data-aos="fade-up"
+                        class="avatar" alt="Avatar">
             </div>
-            <div class="col-lg-6 col-sm-12 info" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
-                <button *ngIf="isLogged" type="button" (click)="open(editAboutusModal);"
-                    class="btn btn-success btn-sm boton-editar zoom-in"><i class="bi bi-pencil"></i></button>
+            <!--<div class="col-lg-6 col-sm-12 info" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
+                
                 <h1 class="titulo">Conocé más sobre mí</h1>
                 <hr>
                 <p class="parrafo" *ngIf="aboutInfo?.aboutdescription">
                     {{aboutInfo.aboutdescription}}
                 </p>
             </div>
-            <div class="col-lg-3 col-sm-12" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
-                <div class="card zoom-in">
+            <div class="col-lg-12 col-sm-12" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
+                <div class="card zoom-in text-center">
                     <h2 class="box-personal-info-title">Información personal</h2>
                     <p *ngIf="aboutInfo?.age"><i class="bi bi-person-fill"></i>&nbsp;&nbsp;Edad: {{aboutInfo.age}}</p>
                     <p *ngIf="aboutInfo?.location"><i class="bi bi-geo-alt-fill"></i>&nbsp;&nbsp;Ubicación: {{aboutInfo.location}}</p>
                     <p *ngIf="aboutInfo?.phone"><i class="bi bi-telephone-fill"></i>&nbsp;&nbsp;Teléfono: {{aboutInfo.phone}}</p>
                     <p *ngIf="aboutInfo?.email"><i class="bi bi-envelope-fill"></i>&nbsp;&nbsp;E-Mail: {{aboutInfo.email}}</p>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>

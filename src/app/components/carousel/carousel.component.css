@@ -6,7 +6,7 @@
 img{
     width: 100%;
     height: auto;
-    max-height: 320px;
+    max-height: 340px;
 }
 
 @media (max-width: 600px) {
@@ -17,5 +17,12 @@ img{
 
     img {
         display: none;
+    }
+}
+@media (min-width: 1024px) {
+    img{
+        width: 100%;
+        height: auto;
+        max-height: 550px;
     }
 }

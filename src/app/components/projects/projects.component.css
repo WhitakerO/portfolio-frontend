@@ -6,7 +6,7 @@ h5,
 h6 {
     font-family: 'Poppins', sans-serif;
 }
-.projects{
+#proyectos{
   background-color: var(--secondary-color);
     padding-top: 5%;
 }

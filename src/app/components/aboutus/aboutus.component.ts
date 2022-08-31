@@ -17,6 +17,7 @@ export class AboutusComponent implements OnInit {
   aboutInfo: Aboutus;
   closeResult = "";
   isLogged = this.tokenService.getToken();
+  background = "#fff123";
 
   constructor(private tokenService:TokenService, private notifier:NotifierService, private modalService: NgbModal, private aboutusService: AboutusService) { }
   
@@ -34,6 +35,7 @@ export class AboutusComponent implements OnInit {
         this.notifier.showNotification("Has cerrado sesión satisfactoriamente.", "Cerrar");
     }
   }
+
   getAboutus() {
     this.aboutusService.getAboutus().subscribe ( response =>{
       return this.aboutInfo=response;

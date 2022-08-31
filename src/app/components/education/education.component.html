@@ -1,4 +1,4 @@
-<section id="educacion">
+<section id="educacion" class="min-vh-100 pt-5 pb-5 justify-content-center align-items-center d-flex">
     <div class="education">
         <div class="container" data-aos="zoom-in-right" data-aos-duration="500">
             <h1 class="titulo">Educación</h1>
@@ -11,10 +11,11 @@
                 <div class="col-lg-4" *ngFor="let education of educationInfo" data-aos="fade-up"
                     data-aos-duration="500">
                     <div class="card card-margin">
-                        <div class="card-header no-border">
+                        <div class="card-header">
                             <h5 class="card-title">{{education.institution}} <br> {{education.location}}</h5>
                         </div>
-                        <div class="card-body pt-0">
+                        
+                        <div class="card-body pt-3">
                             <div class="widget-49">
                                 <div class="widget-49-title-wrapper">
                                     <div class="widget-49-date-primary">
@@ -27,6 +28,7 @@
                                         <span class="widget-49-meeting-time">{{education.enddate}}</span>
                                     </div>
                                 </div>
+                                
                                 <div class="widget-49-meeting-points">
                                     <p>
                                         {{education.description}}
