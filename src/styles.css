@@ -23,6 +23,11 @@ button { font-family: 'Poppins', sans-serif; }
 .btn-azul:hover { 
     background-color: #546fc5;
 }
+.btn-green {
+    background-color: transparent;
+    border: 2px solid #1f8f24;
+    border-radius: 26px;
+}
 .zoom-in { 
     transition: transform 0.2s ease-in 0s;
 }

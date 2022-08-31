@@ -1,5 +1,5 @@
-
-<mat-toolbar id="nav" class="navbar fixed-top navbar-transparent scrolling-navbar navbar-transparent" color-on-scroll="400">
+<mat-toolbar id="nav" class="navbar fixed-top navbar-transparent scrolling-navbar navbar-transparent"
+  color-on-scroll="400">
   <button class="btn-menu" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menú">
     <mat-icon>menu</mat-icon>
   </button>
@@ -19,6 +19,14 @@
     <a href="#habilidades" mat-menu-item>
       <mat-icon>insights</mat-icon>Habilidades
     </a>
+    <div class="onlymobile">
+      <a mat-menu-item *ngIf="!isLogged" (click)="open(loginModal);">
+        <mat-icon>login</mat-icon>Login
+      </a>
+      <a mat-menu-item *ngIf="isLogged" (click)="onLogout();">
+        <mat-icon>logout</mat-icon>Logout
+      </a>
+    </div>
   </mat-menu>
 
   <img class="img" src="../../../assets/images/ArgentinaPrograma.png">
@@ -26,38 +34,38 @@
 
   <span class="espaciador"></span>
 
-  <button *ngIf="!isLogged" class="login iconos" #tooltip="matTooltip" (click)="open(loginModal);" matTooltip="Inicia sesión en tu cuenta" mat-mini-fab color="accent"
-    aria-label="Iniciar sesión">
-    <mat-icon>login</mat-icon>
-  </button>
-  <button *ngIf="isLogged" class="btn btn-danger" (click)="onLogout()">Logout</button>
+  <button *ngIf="!isLogged" class="btn btn-primary button zoom-in" (click)="open(loginModal);"><i
+      class="bi bi-box-arrow-in-left"></i>&nbsp;&nbsp;Login</button>
+  <button *ngIf="isLogged" class="btn btn-danger btn-logout zoom-in" (click)="onLogout()"><i
+      class="bi bi-box-arrow-left"></i>&nbsp;&nbsp;Logout</button>
 </mat-toolbar>
 
 
 <!-- Login modal -->
 <ng-template #loginModal let-modal>
   <div class="modal-header">
-      <h2 class="modal-title" id="modal-basic-title"><i class="bi bi-box-arrow-in-right"></i> Iniciar sesión en mi cuenta</h2>
-      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    <h2 class="modal-title" id="modal-basic-title"><i class="bi bi-box-arrow-in-right"></i> Iniciar sesión en mi cuenta
+    </h2>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body p-5">
-      <form>
-          <div class="mb-3 ml-5">
-              <div class="form-floating mb-3">
-                  <input type="text" name="user" id="user" class="form-control rounded-3"
-                      id="userInput" [(ngModel)]="nombreUsuario" placeholder="Coloca el usuario">
-                  <label for="userInput">Nombre de usuario</label>
-              </div>
-              <div class="form-floating mb-3">
-                  <input type="password" name="password" id="password" class="form-control rounded-3"
-                      id="passwordInput" [(ngModel)]="password" placeholder="Coloca la contraseña">
-                  <label for="passwordInput">Contraseña</label>
-              </div>
-          </div>
-      </form>
+    <form (keyup.enter)="onLogin()" >
+      <div class="mb-3 ml-5">
+        <div class="form-floating mb-3">
+          <input type="text" name="user" id="user" class="form-control rounded-3" id="userInput"
+          [(ngModel)]="nombreUsuario" placeholder="Coloca el usuario">
+          <label for="userInput">Nombre de usuario</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" name="password" id="password" class="form-control rounded-3" id="passwordInput"
+            [(ngModel)]="password" placeholder="Coloca la contraseña">
+          <label for="passwordInput">Contraseña</label>
+        </div>
+      </div>
+    </form>
   </div>
   <div class="modal-footer">
-      <button type="button" class="btn btn-success" (click)="onLogin()" data-dismiss="modal"><i
-              class="bi bi-box-arrow-in-right"></i>&nbsp;&nbsp;Iniciar sesión</button>
+    <button type="button" class="btn btn-success" (click)="onLogin()" data-dismiss="modal"><i
+        class="bi bi-box-arrow-in-right"></i>&nbsp;&nbsp;Iniciar sesión</button>
   </div>
 </ng-template>

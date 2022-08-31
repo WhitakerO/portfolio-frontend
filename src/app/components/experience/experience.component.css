@@ -21,9 +21,9 @@ h6 {
 }
 .image-card {
     margin-top: 20px;
-    padding: 10px;
     width: 150px;
 }
+
 .btn-delete {
     position: absolute;
     top: 20px;
@@ -47,8 +47,10 @@ h6 {
     align-content: right;
 }
 .descripcion {
-    margin-left: -30px;
+    padding-right: 40px;
+    margin-left: -60px;
 }
+
 .tarjeta {
     margin-top: 10px;
     background-color: var(--card-color);
@@ -60,15 +62,26 @@ h6 {
 .tarjeta:hover {
     transform: scale(1.03);
 }
-@media (max-width: 700px) {
+@media (max-width: 768px) {
     .tarjeta {
-        margin-left: 20px;
-        margin-right: 20px;
+        margin-left: 1px;
+        margin-right: 1px;
     }
     .descripcion {
-        padding: 50px;
+        padding: 20px;
         margin-left: 0px;
         text-align: justify;
     }
-
+    .btn-add {
+        width: 50%;
+        margin-bottom: 1rem;
+    }
+    .btn-delete {
+        top: 10px;
+        left: 90%;
+    }
+    .btn-edit {
+        top: 10px;
+        left: 80%;
+    }
 }

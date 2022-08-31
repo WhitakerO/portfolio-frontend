@@ -1,12 +1,11 @@
-
-
-<div [ngStyle]="{'background-image': aboutInfo.carouselimg2}" class="acercade min-vh-100 justify-content-center align-items-center d-flex">
+<div *ngIf="aboutInfo?.backgroundimage" [ngStyle]="{'background-image': 'url(' + aboutInfo.backgroundimage + ')'}"
+    class="acercade min-vh-100 justify-content-center align-items-center d-flex">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-lg-12 text-center justify-content-center">         
+            <div class="col-sm-12 col-lg-12 text-center justify-content-center">
                 <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
                     <button *ngIf="isLogged" type="button" (click)="open(editAboutusModal);"
-                class="btn btn-success boton-editar zoom-in"><i class="bi bi-pencil"></i> Editar</button>
+                        class="btn btn-success boton-editar btn-green zoom-in"><i class="bi bi-pencil"></i> Editar</button>
                     <h1>
                         <span *ngIf="aboutInfo?.name">{{aboutInfo.name}}</span>
                     </h1>
@@ -16,29 +15,12 @@
                     <a *ngIf="aboutInfo?.cvlink" href="{{aboutInfo.cvlink}}" class="btn btn-dark button zoom-in"><i
                             class="bi bi-download"></i>&nbsp; &nbsp;Descargar
                         CV</a>&nbsp;
-                        <button class="btn btn-primary button zoom-in"><i
+                    <button class="btn btn-primary button zoom-in" type="button" (click)="open(aboutusModal);"><i
                             class="bi bi-person"></i>&nbsp; &nbsp;Acerca de mí</button>
                 </div>
-                <img *ngIf="aboutInfo?.avatarimg" src="{{aboutInfo.avatarimg}}" data-aos="fade-up"
-                        class="avatar" alt="Avatar">
+                <!--<img *ngIf="aboutInfo?.avatarimg" src="{{aboutInfo.avatarimg}}" data-aos="fade-up"
+                        class="avatar" alt="Avatar">-->
             </div>
-            <!--<div class="col-lg-6 col-sm-12 info" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
-                
-                <h1 class="titulo">Conocé más sobre mí</h1>
-                <hr>
-                <p class="parrafo" *ngIf="aboutInfo?.aboutdescription">
-                    {{aboutInfo.aboutdescription}}
-                </p>
-            </div>
-            <div class="col-lg-12 col-sm-12" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
-                <div class="card zoom-in text-center">
-                    <h2 class="box-personal-info-title">Información personal</h2>
-                    <p *ngIf="aboutInfo?.age"><i class="bi bi-person-fill"></i>&nbsp;&nbsp;Edad: {{aboutInfo.age}}</p>
-                    <p *ngIf="aboutInfo?.location"><i class="bi bi-geo-alt-fill"></i>&nbsp;&nbsp;Ubicación: {{aboutInfo.location}}</p>
-                    <p *ngIf="aboutInfo?.phone"><i class="bi bi-telephone-fill"></i>&nbsp;&nbsp;Teléfono: {{aboutInfo.phone}}</p>
-                    <p *ngIf="aboutInfo?.email"><i class="bi bi-envelope-fill"></i>&nbsp;&nbsp;E-Mail: {{aboutInfo.email}}</p>
-                </div>
-            </div>-->
         </div>
     </div>
 </div>
@@ -103,16 +85,10 @@
                     <label for="floatingInput">Avatar</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" name="carouselimg1" id="carouselimg1" class="form-control rounded-3"
-                        id="floatingInput" [(ngModel)]="aboutInfo.carouselimg1"
-                        placeholder="Coloca el link de la portada 1">
-                    <label for="floatingInput">Foto de portada 1</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" name="carouselimg2" id="carouselimg2" class="form-control rounded-3"
-                        id="floatingInput" [(ngModel)]="aboutInfo.carouselimg2"
-                        placeholder="Coloca el link de la portada 2">
-                    <label for="floatingInput">Foto de portada 2</label>
+                    <input type="text" name="backgroundimage" id="backgroundimage" class="form-control rounded-3"
+                        id="floatingInput" [(ngModel)]="aboutInfo.backgroundimage"
+                        placeholder="Coloca el link de la imagen de fondo">
+                    <label for="floatingInput">Imagen de fondo</label>
                 </div>
                 <br>
                 <h2>Redes sociales</h2>
@@ -158,5 +134,38 @@
     <div class="modal-footer">
         <button type="button" class="btn btn-success" data-dismiss="modal" (click)="save(aboutInfo)"><i
                 class="bi bi-pencil"></i>&nbsp;&nbsp;Guardar</button>
+    </div>
+</ng-template>
+
+<!-- Modal de información acerca de mí  -->
+<ng-template #aboutusModal let-modal>
+    <div class="modalaboutus">
+        <div class="text-center justify-content-center align-items-center mb-2">
+            <img *ngIf="aboutInfo?.avatarimg" src="{{aboutInfo.avatarimg}}" data-aos="fade-up" class="avatar"
+                alt="Avatar">
+        </div>
+        <div class="modal-body">
+            <div class="col-lg-12 col-sm-12" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
+                <p class="parrafo" *ngIf="aboutInfo?.aboutdescription">
+                    {{aboutInfo.aboutdescription}}
+                </p>
+            </div>
+            <div class="col-lg-12 col-sm-12" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
+                <div class="card text-center">
+                    <h2 class="box-personal-info-title">Información personal</h2>
+                    <p *ngIf="aboutInfo?.age"><i class="bi bi-person-fill"></i>&nbsp;&nbsp;Edad: {{aboutInfo.age}}</p>
+                    <p *ngIf="aboutInfo?.location"><i class="bi bi-geo-alt-fill"></i>&nbsp;&nbsp;Ubicación:
+                        {{aboutInfo.location}}</p>
+                    <p *ngIf="aboutInfo?.phone"><i class="bi bi-telephone-fill"></i>&nbsp;&nbsp;Teléfono:
+                        {{aboutInfo.phone}}</p>
+                    <p *ngIf="aboutInfo?.email"><i class="bi bi-envelope-fill"></i>&nbsp;&nbsp;E-Mail:
+                        {{aboutInfo.email}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer d-grid gap-2 d-md-flex justify-content-md-end mr-4">
+            <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')"><i
+                    class="bi bi-close"></i>&nbsp;&nbsp;Cerrar</button>
+        </div>
     </div>
 </ng-template>

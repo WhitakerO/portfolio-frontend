@@ -8,7 +8,9 @@ h6 {
 }
 #educacion {
     background-color: var(--main-color);
-    padding-top: 5%;
+}
+.education {
+  padding-top: 5%;
     padding-bottom: 45px;
 }
 .titulo {
@@ -337,7 +339,8 @@ body{
   padding: 1rem;
   margin-top: .6rem;
   text-align: justify;
-  border-radius: 10%;
+  border-radius: 3%;
+  border-bottom: 1px solid #596e81;
   border-top: 1px solid #596e81;
 }
 
@@ -356,4 +359,10 @@ body{
 
 .widget-49 .widget-49-meeting-action a {
   text-transform: uppercase;
+}
+@media (max-width: 768px) {
+  .btn-add {
+    width: 50%;
+    margin-bottom: 1rem;
+  }
 }

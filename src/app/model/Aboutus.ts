@@ -3,8 +3,7 @@ export class Aboutus {
     title: string;
     aboutdescription:string;
     avatarimg: string;
-    carouselimg1: string;
-    carouselimg2: string;
+    backgroundimage: string;
     age: number;
     location: string;
     phone: string;

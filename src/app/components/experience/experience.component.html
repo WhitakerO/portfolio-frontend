@@ -2,13 +2,17 @@
     <div class="experience">
         <div class="container" data-aos="zoom-in-right" data-aos-duration="500">
             <h1 class="titulo">Experiencia laboral</h1>
+            <div class="container">
+                
+            </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button *ngIf="isLogged" class="btn btn-success zoom-in" (click)="open(addExperienceModal)"><i
+                <button *ngIf="isLogged" class="btn btn-success btn-green btn-add zoom-in" (click)="open(addExperienceModal)"><i
                         class="bi bi-plus-circle"></i>&nbsp;&nbsp;Agregar
                     experiencia</button>
             </div>
             <div class="row tarjeta" cdkDrag *ngFor="let experiencie of experienceInfo" data-aos="fade-up"
                 data-aos-duration="500">
+                
                 <div class="col-lg-4 col-sm-12" style="align-items: center;">
                     <div class="card" style="width: 18rem; align-items: center;">
                         <img class="card-img-top" src="{{experiencie.image}}" class="image-card" alt="Imagen">
@@ -21,7 +25,7 @@
                 </div>
                 <div class="col-lg-8 col-sm-12">
                     <div class="jumbotron jumbotron-fluid">
-                        <div class="container descripcion">
+                        <div class="descripcion">
                             <h1>{{experiencie.title}}</h1>
                             <p style="text-align: justify;">{{experiencie.description}}</p>
                             <button *ngIf="isLogged" type="button" (click)="editBtn(editExperienceModal, experiencie)"

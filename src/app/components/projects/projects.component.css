@@ -8,12 +8,16 @@ h6 {
 }
 #proyectos{
   background-color: var(--secondary-color);
-    padding-top: 5%;
+    
+}
+.projects {
+  padding-top: 5%;
 }
 
 .titulo {
   text-align: center;
   font-size: 40px;
+  padding-bottom: 3%;
 }
 .btn-delete {
   position: absolute;
@@ -97,10 +101,14 @@ h6 {
     right: 20px;
     bottom: 20px;
   }
-  @media (max-width: 700px) {
+  @media (max-width: 768px) {
     .timeline-container {
       max-width: 100%;
       margin-left: 8px;
+    }
+    .btn-add {
+      width: 50%;
+      margin-bottom: 1rem;
     }
     h1 {
         padding-top: 10px;

@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CarouselComponent } from './components/carousel/carousel.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { ProjectsComponent } from './components/projects/projects.component';
@@ -31,7 +30,6 @@ import { httpInterceptorProviders } from './services/interceptor/interceptor.ser
   declarations: [
     AppComponent,
     HeaderComponent,
-    CarouselComponent,
     AboutusComponent,
     ProjectsComponent,
     ExperienceComponent,
@@ -53,7 +51,7 @@ import { httpInterceptorProviders } from './services/interceptor/interceptor.ser
     MatMenuModule,
     MatSnackBarModule,
     FormsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
   ],
   providers: [httpInterceptorProviders,
     DatePipe],

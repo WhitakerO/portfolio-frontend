@@ -7,8 +7,10 @@ h6 {
     font-family: 'Poppins', sans-serif;
 }
 
-.skills {
+#habilidades {
     background-color: var(--main-color);
+}
+.skills {
     padding-top: 5%;
     padding-bottom: 45px;
 }
@@ -195,4 +197,13 @@ h6 {
 
 .circulo {
     font-family: 'Anton', sans-serif;
+}
+@media (max-width: 768px) {
+    .bar {
+        width: 70%;
+    }
+    .btn-add {
+        width: 50%;
+        margin-bottom: 1rem;
+    }
 }

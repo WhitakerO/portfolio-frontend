@@ -63,8 +63,8 @@ export class HeaderComponent implements OnInit {
   onLogout() {
     this.tokenService.logOut();
   }
-  @HostListener('window:scroll', ['$event'])
 
+  @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     let element = document.querySelector('.navbar') as HTMLElement;
     if (window.pageYOffset > 230) {

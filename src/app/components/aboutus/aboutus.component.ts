@@ -5,9 +5,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotifierService } from 'src/app/services/notifier.service';
 import { TokenService } from 'src/app/services/token.service';
 
-
-
-
 @Component({
   selector: 'app-aboutus',
   templateUrl: './aboutus.component.html',
@@ -35,9 +32,12 @@ export class AboutusComponent implements OnInit {
         this.notifier.showNotification("Has cerrado sesión satisfactoriamente.", "Cerrar");
     }
   }
-
+ 
   getAboutus() {
     this.aboutusService.getAboutus().subscribe ( response =>{
+      if(!response.backgroundimage) {
+        response.backgroundimage = "https://static.vecteezy.com/system/resources/previews/001/987/748/original/abstract-template-blue-geometric-diagonal-overlap-layer-on-dark-blue-background-free-vector.jpg";
+      }
       return this.aboutInfo=response;
     })
   }
