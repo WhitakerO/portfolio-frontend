@@ -1,4 +1,3 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Education } from 'src/app/model/Education';
@@ -26,22 +25,17 @@ export class EducationComponent implements OnInit {
     
   }
 
-  getEducation() {
+  async getEducation() {
     this.educationService.getEducation().subscribe(response => {
       return this.educationInfo = response;
     })
   }
 
   deleteEducation(id: number) {
+    if(!id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
     return this.educationService.deleteEducation(id).subscribe(
       res => { this.ngOnInit(), this.notifier.showNotification("Tarjeta de educación borrada correctamente.", "Cerrar") }
     );
-  }
-
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.educationInfo, event.previousIndex, event.currentIndex);
-    console.log(event.previousIndex)
-    console.log(event.currentIndex)
   }
 
   open(content: any) {
@@ -53,8 +47,9 @@ export class EducationComponent implements OnInit {
     });
   }
   editBtn(content: any, exp: Education) {
-    this.addEducation = exp;
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.addEducation = exp;
+      if(!this.addEducation.id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
+      this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -64,13 +59,14 @@ export class EducationComponent implements OnInit {
   private getDismissReason(reason: any) {
     if (reason != undefined) return this.ngOnInit();
   }
+
   save(educationObject: Education) {
     this.educationInfo.push(educationObject);
     this.educationService.addEducation(educationObject);
     this.notifier.showNotification("Has creado una nueva tarjeta de educación.", "Cerrar");
     this.modalService.dismissAll();
-    return this.ngOnInit();
   }
+  
   edit(educationObject: Education) {
     this.modalService.dismissAll();
     this.notifier.showNotification("Has editado con éxito esta tarjeta de educación.", "Cerrar");

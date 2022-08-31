@@ -28,6 +28,7 @@ export class ExperienceComponent implements OnInit {
     })
   }
   deleteExperience(id: number) {
+    if(!id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
     return this.experienceService.deleteExperience(id).subscribe(
       res => { 
         this.experienceInfo.filter(item => item.id == id);
@@ -47,6 +48,7 @@ export class ExperienceComponent implements OnInit {
   }
   editBtn(content: any, exp: Experience) {
     this.addExperience = exp;
+    if(!this.addExperience.id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -61,7 +63,6 @@ export class ExperienceComponent implements OnInit {
     this.experienceService.addExperience(expObject);
     this.notifier.showNotification("Has creado una nueva experiencia.", "Cerrar");
     this.modalService.dismissAll();
-    return this.ngOnInit();
   }
   edit(expObject: Experience) {
     this.modalService.dismissAll();

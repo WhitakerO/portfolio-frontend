@@ -38,6 +38,7 @@ export class SkillsComponent implements OnInit {
   }
 
   deleteSkill(id: number) {
+    if(!id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
     return this.skillService.deleteSkill(id).subscribe(
       res => { this.ngOnInit(), this.notifier.showNotification("Habilidad borrada correctamente.", "Cerrar") }
     );
@@ -54,6 +55,7 @@ export class SkillsComponent implements OnInit {
 
   editBtn(content: any, skill: Skill) {
     this.editSkillObj = skill;
+    if(!this.editSkillObj.id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -85,7 +87,6 @@ export class SkillsComponent implements OnInit {
     }
     this.skillService.addSkill(skillObject);
     this.modalService.dismissAll();
-    return this.ngOnInit();
   }
   edit() {
     this.modalService.dismissAll();

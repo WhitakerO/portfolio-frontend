@@ -4,8 +4,8 @@
             <h1 class="titulo">Educación</h1>
             <div class="row">
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end pb-2">
-                    <button *ngIf="isLogged" class="btn btn-success btn-green btn-add zoom-in" (click)="open(addEducationModal)"><i
-                            class="bi bi-plus-circle"></i>&nbsp;&nbsp;Agregar
+                    <button *ngIf="isLogged" class="btn btn-success btn-green btn-add zoom-in"
+                        (click)="open(addEducationModal)"><i class="bi bi-plus-circle"></i>&nbsp;&nbsp;Agregar
                         educación</button>
                 </div>
                 <div class="col-lg-4" *ngFor="let education of educationInfo" data-aos="fade-up"
@@ -14,7 +14,7 @@
                         <div class="card-header">
                             <h5 class="card-title">{{education.institution}} <br> {{education.location}}</h5>
                         </div>
-                        
+
                         <div class="card-body pt-3">
                             <div class="widget-49">
                                 <div class="widget-49-title-wrapper">
@@ -28,13 +28,14 @@
                                         <span class="widget-49-meeting-time">{{education.enddate}}</span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="widget-49-meeting-points">
                                     <p>
                                         {{education.description}}
                                     </p>
 
-                                    <button *ngIf="isLogged" type="button" (click)="editBtn(editEducationModal, education)"
+                                    <button *ngIf="isLogged" type="button"
+                                        (click)="editBtn(editEducationModal, education)"
                                         class="btn btn-success btn-sm btn-edit zoom-in"><i
                                             class="bi bi-pencil"></i></button>
                                     <button *ngIf="isLogged" type="button" (click)="deleteEducation(education.id)"
@@ -59,7 +60,7 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="mb-3">
+                        <div class="mb-2 p-4">
                             <div class="form-floating mb-3">
                                 <input type="text" name="institution" id="institution" class="form-control rounded-3"
                                     id="floatingInput" [(ngModel)]="addEducation.institution"
@@ -118,7 +119,7 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="mb-3">
+                        <div class="mb-2 p-4">
                             <div class="form-floating mb-3">
                                 <input type="text" name="institution" id="institution" class="form-control rounded-3"
                                     id="floatingInput" [(ngModel)]="addEducation.institution"
