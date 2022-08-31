@@ -1,6 +1,7 @@
 # Proyecto de Portfolio: Frontend
 
-**Link demo: https://portfolio-611ec.web.app/**
+**Link live: https://octaviowhitaker.web.app/**  
+**Link backend: https://github.com/WhitakerO/portfolio-backend**
 
 El siguiente proyecto está trabajado utilizando Angular, el cuál está complementado con un backend en Java (Spring Boot). Se siguieron los lineamientos y condiciones del programa Argentina Programa, desarrollado por el INTI (Instituto Nacional de Tecnología Industrial). Para acceder a estos requisitos, puedes contactarme por e-mail y con gusto me pondré en contacto con usted.
 
@@ -34,7 +35,6 @@ Con esto, podrá buildear el proyecto y ponerlo en producción.
  
 ## Actualizaciones pendientes
 
-- Especificar **lenght** en las tablas que requieran 
 - Introducir Reactive Forms de Angular
 - Optimizar el diseño para dispositivos móviles
 
