@@ -19,12 +19,12 @@ export class ExperienceService {
   }
   addExperience(expObject: Experience) {
     return this.httpClient.post<Experience>(`${this.config.backendURL}/api/explaboral/agregar/`, expObject).subscribe(
-      res => { console.log(`Se metió el objeto ${expObject}`) }
+      res => res
     );
   }
   saveExperience(expObject: Experience) {
     return this.httpClient.put<Experience>(`${this.config.backendURL}/api/explaboral/guardar/`, expObject).subscribe(
-      res => { console.log(`Se metió el objeto ${expObject}`) }
+      res => res
     );
   }
 

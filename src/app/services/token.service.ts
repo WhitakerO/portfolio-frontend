@@ -51,7 +51,5 @@ export class TokenService {
     window.sessionStorage.clear();
     sessionStorage.setItem("loggedOut", "true");
     window.location.reload();
-    setTimeout(() => this.notifier.showNotification(`Cerraste la sesión`, "Cerrar"), 2000)
-
   }
 }

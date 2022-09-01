@@ -19,12 +19,12 @@ export class ProjectService {
   }
   addProject(projectObject: Project) {
     return this.httpClient.post<Project>(`${this.config.backendURL}/api/proyecto/agregar/`, projectObject).subscribe(
-      res => { console.log(`Se metió el objeto ${projectObject}`) }
+      res => res
     );
   }
   saveProject(projectObject: Project) {
     return this.httpClient.put<Project>(`${this.config.backendURL}/api/proyecto/guardar/`, projectObject).subscribe(
-      res => { console.log(`Se metió el objeto ${projectObject}`) }
+      res => res
     );
   }
 }

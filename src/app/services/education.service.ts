@@ -19,12 +19,12 @@ export class EducationService {
   }
   addEducation(educationObject: Education) {
     return this.httpClient.post<Education>(`${this.config.backendURL}/api/educacion/agregar/`, educationObject).subscribe(
-      res => { console.log(`Se metió el objeto ${educationObject}`) }
+      res => res
     );
   }
   saveEducation(educationObject: Education) {
     return this.httpClient.put<Education>(`${this.config.backendURL}/api/educacion/guardar/`, educationObject).subscribe(
-      res => { console.log(`Se metió el objeto ${educationObject}`) }
+      res => res
     );
   }
 }

@@ -19,12 +19,12 @@ export class SkillService {
   }
   addSkill(skillObject: Skill) {
     return this.httpClient.post<Skill>(`${this.config.backendURL}/api/habilidad/agregar/`, skillObject).subscribe(
-      res => { console.log(`Se metió el objeto ${skillObject}`) }
+      res => res
     );
   }
   saveSkill(skillObject: Skill) {
     return this.httpClient.put<Skill>(`${this.config.backendURL}/api/habilidad/guardar/`, skillObject).subscribe(
-      res => { console.log(`Se metió el objeto ${skillObject}`) }
+      res => res
     );
   }
 }

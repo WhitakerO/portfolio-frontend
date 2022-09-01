@@ -17,13 +17,13 @@ export class AboutusService {
   addAboutus(a: Aboutus) {
     console.log(a);
     return this.httpClient.post<Aboutus>(`${this.config.backendURL}/api/acercade/agregar/`, a).subscribe(
-      res => { console.log(`Se metió el objeto ${a}`) }
+      res => res
     );
   }
   saveAboutus(a: Aboutus) {
     console.log(a);
     return this.httpClient.put<Aboutus>(`${this.config.backendURL}/api/acercade/guardar/`, a).subscribe(
-      res => { console.log(`Se metió el objeto ${a}`) }
+      res => res
     );
   }
 }
