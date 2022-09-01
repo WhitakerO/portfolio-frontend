@@ -20,12 +20,8 @@ export class AboutusComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAboutus();
-    let savingAbout = sessionStorage.getItem("savingAboutus");
     let loggedOut = sessionStorage.getItem("loggedOut");
-    if (savingAbout) {
-      sessionStorage.removeItem("savingAboutus");
-      this.notifier.showNotification("Has guardado tu información personal.", "Cerrar");
-    }
+
     if (loggedOut) {
       sessionStorage.removeItem("loggedOut");
       this.notifier.showNotification("Has cerrado sesión satisfactoriamente.", "Cerrar");
@@ -43,9 +39,7 @@ export class AboutusComponent implements OnInit {
   save(a: Aboutus) {
     this.modalService.dismissAll();
     this.aboutusService.saveAboutus(a);
-    window.location.reload();
-    sessionStorage.setItem("savingAboutus", "true");
-
+    this.notifier.showNotification("Has guardado tu información personal.", "Cerrar");
   }
   open(content: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
