@@ -31,7 +31,6 @@ input[type="text"], input[type="password"], .input-group-text, textarea#descript
 input[type="text"]:focus, input[type="password"]:focus  {
     background-color : #4d4d4d;
     color: white; 
-    padding-left: 2rem;
 }
 button { font-family: 'Poppins', sans-serif; }
 .btn-azul { 

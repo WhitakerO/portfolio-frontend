@@ -9,21 +9,21 @@ import { Config } from '../config/config';
 })
 export class AboutusService {
 
-  constructor(private httpClient:HttpClient, private config:Config) { }
+  constructor(private httpClient: HttpClient, private config: Config) { }
 
   getAboutus(): Observable<Aboutus> {
     return this.httpClient.get<Aboutus>(`${this.config.backendURL}/api/acercade/obtener/1`);;
   }
-  addAboutus(a : Aboutus) {
+  addAboutus(a: Aboutus) {
     console.log(a);
-    return this.httpClient.post<Aboutus>(`${this.config.backendURL}/api/acercade/agregar/`, a).subscribe( 
-      res=> { console.log(`Se metió el objeto ${a}`) } 
+    return this.httpClient.post<Aboutus>(`${this.config.backendURL}/api/acercade/agregar/`, a).subscribe(
+      res => { console.log(`Se metió el objeto ${a}`) }
     );
   }
-  saveAboutus(a : Aboutus) {
+  saveAboutus(a: Aboutus) {
     console.log(a);
-    return this.httpClient.put<Aboutus>(`${this.config.backendURL}/api/acercade/guardar/`, a).subscribe( 
-      res=> { console.log(`Se metió el objeto ${a}`) } 
+    return this.httpClient.put<Aboutus>(`${this.config.backendURL}/api/acercade/guardar/`, a).subscribe(
+      res => { console.log(`Se metió el objeto ${a}`) }
     );
   }
 }

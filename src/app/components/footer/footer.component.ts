@@ -15,10 +15,10 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
     this.getAboutus();
   }
-  
+
   getAboutus() {
-    this.aboutusService.getAboutus().subscribe ( response =>{
-      return this.socialInfo=response;
+    this.aboutusService.getAboutus().subscribe(response => {
+      return this.socialInfo = response;
     })
   }
 

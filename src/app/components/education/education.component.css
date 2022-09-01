@@ -4,82 +4,93 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
+
 #educacion {
-    background-color: var(--main-color);
+  background-color: var(--main-color);
 }
+
 .education {
   padding-top: 5%;
-    padding-bottom: 45px;
+  padding-bottom: 45px;
 }
+
 .titulo {
-    text-align: center;
-    padding-bottom: 3%;
-    font-size: 40px;
-    color: #e6e4e9;
+  text-align: center;
+  padding-bottom: 3%;
+  font-size: 40px;
+  color: #e6e4e9;
 }
-body{
-    background: #F4F7FD;
-    margin-top:20px;
+
+body {
+  background: #F4F7FD;
+  margin-top: 20px;
 }
 
 .card-margin {
-    margin-bottom: 1.875rem;
+  margin-bottom: 1.875rem;
 }
+
 .card {
-    border: 0;
-    box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
-    -webkit-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
-    -ms-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
-    transition: transform .5s ease-in-out;
+  border: 0;
+  box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  -ms-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  transition: transform .5s ease-in-out;
 }
+
 .card:hover {
   transform: scale(1.05);
 }
+
 .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: var(--card-color);
-    background-clip: border-box;
-    border-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: var(--card-color);
+  background-clip: border-box;
+  border-radius: 8px;
 }
 
 .card .card-header {
-    background: none;
-    padding-top: 1rem;
-    padding-bottom: 0px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    min-height: 50px;
-    border-bottom: 1px solid #596e81;
+  background: none;
+  padding-top: 1rem;
+  padding-bottom: 0px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  min-height: 50px;
+  border-bottom: 1px solid #596e81;
 }
 
 .card-title {
-    font-size: 10px;
+  font-size: 10px;
 }
+
 .card-header:first-child {
-    border-radius: calc(8px - 1px) calc(8px - 1px) 0 0;
+  border-radius: calc(8px - 1px) calc(8px - 1px) 0 0;
 }
+
 .btn-edit {
-    position: absolute;
-    top: 10px;
-    left: 80%;
-    border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: 80%;
+  border-radius: 50%;
 }
+
 .btn-delete {
-    position: absolute;
-    top: 10px;
-    left: 90%;
-    border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: 90%;
+  border-radius: 50%;
 }
+
 .widget-49 .widget-49-title-wrapper {
   display: flex;
   align-items: center;
@@ -295,6 +306,7 @@ body{
   height: 4rem;
   border-radius: 50%;
 }
+
 .card-image {
   display: flex;
   align-items: center;
@@ -303,6 +315,7 @@ body{
   height: auto;
   border-radius: 50%;
 }
+
 .widget-49 .widget-49-title-wrapper .widget-49-date-base .widget-49-date-day {
   color: #68CBD7;
   font-weight: 500;
@@ -360,6 +373,7 @@ body{
 .widget-49 .widget-49-meeting-action a {
   text-transform: uppercase;
 }
+
 @media (max-width: 768px) {
   .btn-add {
     width: 50%;

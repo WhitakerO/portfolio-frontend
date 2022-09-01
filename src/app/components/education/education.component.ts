@@ -18,11 +18,11 @@ export class EducationComponent implements OnInit {
   isLogged = this.tokenService.getToken();
 
 
-  constructor(private tokenService:TokenService, private educationService: EducationService, private notifier: NotifierService, private modalService: NgbModal) { }
+  constructor(private tokenService: TokenService, private educationService: EducationService, private notifier: NotifierService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getEducation();
-    
+
   }
 
   async getEducation() {
@@ -32,7 +32,7 @@ export class EducationComponent implements OnInit {
   }
 
   deleteEducation(id: number) {
-    if(!id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
+    if (!id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
     return this.educationService.deleteEducation(id).subscribe(
       res => { this.ngOnInit(), this.notifier.showNotification("Tarjeta de educación borrada correctamente.", "Cerrar") }
     );
@@ -47,9 +47,9 @@ export class EducationComponent implements OnInit {
     });
   }
   editBtn(content: any, exp: Education) {
-      this.addEducation = exp;
-      if(!this.addEducation.id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
-      this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+    this.addEducation = exp;
+    if (!this.addEducation.id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -66,7 +66,7 @@ export class EducationComponent implements OnInit {
     this.notifier.showNotification("Has creado una nueva tarjeta de educación.", "Cerrar");
     this.modalService.dismissAll();
   }
-  
+
   edit(educationObject: Education) {
     this.modalService.dismissAll();
     this.notifier.showNotification("Has editado con éxito esta tarjeta de educación.", "Cerrar");

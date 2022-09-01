@@ -49,11 +49,11 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body p-5">
-    <form (keyup.enter)="onLogin()" >
+    <form (keyup.enter)="onLogin()">
       <div class="mb-3 ml-5">
         <div class="form-floating mb-3">
           <input type="text" name="user" id="user" class="form-control rounded-3" id="userInput"
-          [(ngModel)]="nombreUsuario" placeholder="Coloca el usuario">
+            [(ngModel)]="nombreUsuario" placeholder="Coloca el usuario">
           <label for="userInput">Nombre de usuario</label>
         </div>
         <div class="form-floating mb-3">

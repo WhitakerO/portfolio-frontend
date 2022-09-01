@@ -6,19 +6,23 @@ h5,
 h6 {
     font-family: 'Poppins', sans-serif;
 }
+
 #experiencia {
     background-color: var(--secondary-color);
     padding-top: 5%;
     padding-bottom: 45px;
 }
-.invis { 
-    display:none;
+
+.invis {
+    display: none;
 }
+
 .titulo {
     text-align: center;
     padding-bottom: 3%;
     font-size: 40px;
 }
+
 .image-card {
     margin-top: 20px;
     width: 150px;
@@ -30,12 +34,14 @@ h6 {
     left: 94%;
     border-radius: 50%;
 }
+
 .btn-edit {
     position: absolute;
     top: 20px;
     left: 90%;
     border-radius: 50%;
 }
+
 .card {
     margin-left: 12%;
     display: flex;
@@ -46,6 +52,7 @@ h6 {
 .add-btn {
     align-content: right;
 }
+
 .descripcion {
     padding-right: 40px;
     margin-left: -60px;
@@ -59,27 +66,33 @@ h6 {
     border-radius: 8px;
     transition: transform .5s ease-in-out;
 }
+
 .tarjeta:hover {
     transform: scale(1.03);
 }
+
 @media (max-width: 768px) {
     .tarjeta {
         margin-left: 1px;
         margin-right: 1px;
     }
+
     .descripcion {
         padding: 20px;
         margin-left: 0px;
         text-align: justify;
     }
+
     .btn-add {
         width: 50%;
         margin-bottom: 1rem;
     }
+
     .btn-delete {
         top: 10px;
         left: 90%;
     }
+
     .btn-edit {
         top: 10px;
         left: 80%;

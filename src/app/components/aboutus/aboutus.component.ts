@@ -16,29 +16,28 @@ export class AboutusComponent implements OnInit {
   isLogged = this.tokenService.getToken();
   background = "#fff123";
 
-  constructor(private tokenService:TokenService, private notifier:NotifierService, private modalService: NgbModal, private aboutusService: AboutusService) { }
-  
+  constructor(private tokenService: TokenService, private notifier: NotifierService, private modalService: NgbModal, private aboutusService: AboutusService) { }
+
   ngOnInit(): void {
     this.getAboutus();
     let savingAbout = sessionStorage.getItem("savingAboutus");
     let loggedOut = sessionStorage.getItem("loggedOut");
     if (savingAbout) {
-        sessionStorage.removeItem("savingAboutus");
-        this.notifier.showNotification("Has guardado tu información personal.", "Cerrar");
+      sessionStorage.removeItem("savingAboutus");
+      this.notifier.showNotification("Has guardado tu información personal.", "Cerrar");
     }
-    if(loggedOut)
-    {
-        sessionStorage.removeItem("loggedOut");
-        this.notifier.showNotification("Has cerrado sesión satisfactoriamente.", "Cerrar");
+    if (loggedOut) {
+      sessionStorage.removeItem("loggedOut");
+      this.notifier.showNotification("Has cerrado sesión satisfactoriamente.", "Cerrar");
     }
   }
- 
+
   getAboutus() {
-    this.aboutusService.getAboutus().subscribe ( response =>{
-      if(!response.backgroundimage) {
+    this.aboutusService.getAboutus().subscribe(response => {
+      if (!response.backgroundimage) {
         response.backgroundimage = "https://static.vecteezy.com/system/resources/previews/001/987/748/original/abstract-template-blue-geometric-diagonal-overlap-layer-on-dark-blue-background-free-vector.jpg";
       }
-      return this.aboutInfo=response;
+      return this.aboutInfo = response;
     })
   }
   save(a: Aboutus) {
@@ -46,7 +45,7 @@ export class AboutusComponent implements OnInit {
     this.aboutusService.saveAboutus(a);
     window.location.reload();
     sessionStorage.setItem("savingAboutus", "true");
-    
+
   }
   open(content: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
@@ -56,6 +55,6 @@ export class AboutusComponent implements OnInit {
     });
   }
   private getDismissReason(reason: any) {
-    if(reason != undefined) return this.ngOnInit();
-}
+    if (reason != undefined) return this.ngOnInit();
+  }
 }

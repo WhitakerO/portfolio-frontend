@@ -7,9 +7,9 @@ import { bottom } from '@popperjs/core';
 })
 export class NotifierService {
 
-  constructor(private snackBar : MatSnackBar) { }
+  constructor(private snackBar: MatSnackBar) { }
 
-  showNotification(text:string, button:string){
+  showNotification(text: string, button: string) {
     this.snackBar.open(text, button, {
       duration: 3000,
       horizontalPosition: 'center',

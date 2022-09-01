@@ -5,7 +5,8 @@
             <div class="col-sm-12 col-lg-12 text-center justify-content-center">
                 <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
                     <button *ngIf="isLogged" type="button" (click)="open(editAboutusModal);"
-                        class="btn btn-success boton-editar btn-green zoom-in"><i class="bi bi-pencil"></i> Editar</button>
+                        class="btn btn-success boton-editar btn-green zoom-in"><i class="bi bi-pencil"></i>
+                        Editar</button>
                     <h1>
                         <span *ngIf="aboutInfo?.name">{{aboutInfo.name}}</span>
                     </h1>
@@ -18,15 +19,12 @@
                     <button class="btn btn-primary button zoom-in" type="button" (click)="open(aboutusModal);"><i
                             class="bi bi-person"></i>&nbsp; &nbsp;Acerca de mí</button>
                 </div>
-                <!--<img *ngIf="aboutInfo?.avatarimg" src="{{aboutInfo.avatarimg}}" data-aos="fade-up"
-                        class="avatar" alt="Avatar">-->
             </div>
         </div>
     </div>
 </div>
 
 <!-- Edit aboutus modal -->
-
 <ng-template #editAboutusModal let-modal>
     <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title"><i class="bi bi-pencil"></i> Editar información acerca de mí</h4>

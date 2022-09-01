@@ -28,12 +28,12 @@ export class ProjectsComponent implements OnInit {
     })
   }
   deleteProject(id: number) {
-    if(!id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
+    if (!id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
     return this.projectService.deleteProject(id).subscribe(
       res => { this.ngOnInit(), this.notifier.showNotification("Proyecto borrado correctamente.", "Cerrar") }
     );
   }
-  
+
 
   open(content: any) {
     this.addProject = new Project;
@@ -45,7 +45,7 @@ export class ProjectsComponent implements OnInit {
   }
   editBtn(content: any, proy: Project) {
     this.addProject = proy;
-    if(!this.addProject.id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
+    if (!this.addProject.id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -54,8 +54,8 @@ export class ProjectsComponent implements OnInit {
   }
   private getDismissReason(reason: any) {
     console.log(reason)
-    if(reason != undefined) return this.ngOnInit();
-}
+    if (reason != undefined) return this.ngOnInit();
+  }
 
   save(projectObject: Project) {
     this.projectInfo.push(projectObject);

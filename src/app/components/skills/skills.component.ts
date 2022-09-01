@@ -31,14 +31,14 @@ export class SkillsComponent implements OnInit {
     this.skillService.getSkill().subscribe(response => {
       this.skillsInfo = response;
       this.skillsInfo.forEach((skill) => {
-          this.languageInfoArray = this.skillsInfo.filter((skill) => skill.islanguage);
-          this.skillsInfoArray = this.skillsInfo.filter((skill) => !skill.islanguage)
+        this.languageInfoArray = this.skillsInfo.filter((skill) => skill.islanguage);
+        this.skillsInfoArray = this.skillsInfo.filter((skill) => !skill.islanguage)
       })
     })
   }
 
   deleteSkill(id: number) {
-    if(!id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
+    if (!id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
     return this.skillService.deleteSkill(id).subscribe(
       res => { this.ngOnInit(), this.notifier.showNotification("Habilidad borrada correctamente.", "Cerrar") }
     );
@@ -55,7 +55,7 @@ export class SkillsComponent implements OnInit {
 
   editBtn(content: any, skill: Skill) {
     this.editSkillObj = skill;
-    if(!this.editSkillObj.id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
+    if (!this.editSkillObj.id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -64,10 +64,10 @@ export class SkillsComponent implements OnInit {
   }
 
   private getDismissReason(reason: any) {
-    if(reason != undefined) return this.ngOnInit();
-}
+    if (reason != undefined) return this.ngOnInit();
+  }
 
-  isLanguage(event:any) {
+  isLanguage(event: any) {
     if (event.target.checked) {
       this.addSkill.islanguage = true;
     }
@@ -77,8 +77,7 @@ export class SkillsComponent implements OnInit {
   }
 
   save(skillObject: Skill) {
-    if(skillObject.islanguage)
-    {
+    if (skillObject.islanguage) {
       this.languageInfoArray.push(skillObject);
       this.notifier.showNotification("Has agregado un nuevo lenguaje.", "Cerrar");
     } else {

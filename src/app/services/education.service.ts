@@ -9,22 +9,22 @@ import { Config } from '../config/config';
 })
 export class EducationService {
 
-  constructor(private httpClient:HttpClient, private config:Config) { }
+  constructor(private httpClient: HttpClient, private config: Config) { }
 
   getEducation(): Observable<Education[]> {
     return this.httpClient.get<Education[]>(`${this.config.backendURL}/api/educacion/obtener`);
   }
-  deleteEducation(id:number) {
+  deleteEducation(id: number) {
     return this.httpClient.delete(`${this.config.backendURL}/api/educacion/eliminar/${id}`, {});
   }
-  addEducation(educationObject : Education) {
-    return this.httpClient.post<Education>(`${this.config.backendURL}/api/educacion/agregar/`, educationObject).subscribe( 
-      res=> { console.log(`Se metió el objeto ${educationObject}`) } 
+  addEducation(educationObject: Education) {
+    return this.httpClient.post<Education>(`${this.config.backendURL}/api/educacion/agregar/`, educationObject).subscribe(
+      res => { console.log(`Se metió el objeto ${educationObject}`) }
     );
   }
-  saveEducation(educationObject : Education) {
-    return this.httpClient.put<Education>(`${this.config.backendURL}/api/educacion/guardar/`, educationObject).subscribe( 
-      res=> { console.log(`Se metió el objeto ${educationObject}`) } 
+  saveEducation(educationObject: Education) {
+    return this.httpClient.put<Education>(`${this.config.backendURL}/api/educacion/guardar/`, educationObject).subscribe(
+      res => { console.log(`Se metió el objeto ${educationObject}`) }
     );
   }
 }

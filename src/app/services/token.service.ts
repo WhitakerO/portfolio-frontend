@@ -12,7 +12,7 @@ export class TokenService {
 
   roles: Array<string> = [];
 
-  constructor(private notifier:NotifierService) { }
+  constructor(private notifier: NotifierService) { }
 
   public setToken(token: string): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
@@ -37,10 +37,10 @@ export class TokenService {
     window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
   }
 
-   public getAuthorities(): string[]{
+  public getAuthorities(): string[] {
     this.roles = [];
-    if(sessionStorage.getItem(AUTHORITIES_KEY)){
-      JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)!).forEach((authority:any) => {
+    if (sessionStorage.getItem(AUTHORITIES_KEY)) {
+      JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)!).forEach((authority: any) => {
         this.roles.push(authority.authority);
       });
     }
@@ -52,6 +52,6 @@ export class TokenService {
     sessionStorage.setItem("loggedOut", "true");
     window.location.reload();
     setTimeout(() => this.notifier.showNotification(`Cerraste la sesión`, "Cerrar"), 2000)
-   
+
   }
 }

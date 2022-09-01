@@ -1,7 +1,7 @@
 export class Aboutus {
     name: string;
     title: string;
-    aboutdescription:string;
+    aboutdescription: string;
     avatarimg: string;
     backgroundimage: string;
     age: number;

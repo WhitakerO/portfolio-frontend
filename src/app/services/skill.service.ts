@@ -9,22 +9,22 @@ import { Config } from '../config/config';
 })
 export class SkillService {
 
-  constructor(private httpClient:HttpClient, private config:Config) { }
+  constructor(private httpClient: HttpClient, private config: Config) { }
 
   getSkill(): Observable<Skill[]> {
     return this.httpClient.get<Skill[]>(`${this.config.backendURL}/api/habilidad/obtener`);
   }
-  deleteSkill(id:number) {
+  deleteSkill(id: number) {
     return this.httpClient.delete(`${this.config.backendURL}/api/habilidad/eliminar/${id}`, {});
   }
-  addSkill(skillObject : Skill) {
-    return this.httpClient.post<Skill>(`${this.config.backendURL}/api/habilidad/agregar/`, skillObject).subscribe( 
-      res=> { console.log(`Se metió el objeto ${skillObject}`) } 
+  addSkill(skillObject: Skill) {
+    return this.httpClient.post<Skill>(`${this.config.backendURL}/api/habilidad/agregar/`, skillObject).subscribe(
+      res => { console.log(`Se metió el objeto ${skillObject}`) }
     );
   }
-  saveSkill(skillObject : Skill) {
-    return this.httpClient.put<Skill>(`${this.config.backendURL}/api/habilidad/guardar/`, skillObject).subscribe( 
-      res=> { console.log(`Se metió el objeto ${skillObject}`) } 
+  saveSkill(skillObject: Skill) {
+    return this.httpClient.put<Skill>(`${this.config.backendURL}/api/habilidad/guardar/`, skillObject).subscribe(
+      res => { console.log(`Se metió el objeto ${skillObject}`) }
     );
   }
 }

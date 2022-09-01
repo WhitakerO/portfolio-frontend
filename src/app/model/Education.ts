@@ -3,7 +3,7 @@ export class Education {
     title: string;
     description: string;
     institution: string;
-    location:string;
+    location: string;
     logo: string;
     duration: string;
     enddate: string;

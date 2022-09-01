@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class AuthService {
 
-  constructor(private httpClient: HttpClient, private config:Config) { }
+  constructor(private httpClient: HttpClient, private config: Config) { }
 
   public nuevo(nuevoUsuario: NuevoUsuario): Observable<any> {
     return this.httpClient.post<any>(this.config.backendURL + "/auth/nuevo", nuevoUsuario);

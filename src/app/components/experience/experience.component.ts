@@ -17,7 +17,7 @@ export class ExperienceComponent implements OnInit {
   experienceInfo: Experience[];
   isLogged = this.tokenService.getToken();
 
-  constructor(private tokenService:TokenService, private experienceService: ExperienceService, private notifier: NotifierService, private modalService: NgbModal) { }
+  constructor(private tokenService: TokenService, private experienceService: ExperienceService, private notifier: NotifierService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getExperience();
@@ -28,16 +28,16 @@ export class ExperienceComponent implements OnInit {
     })
   }
   deleteExperience(id: number) {
-    if(!id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
+    if (!id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
     return this.experienceService.deleteExperience(id).subscribe(
-      res => { 
+      res => {
         this.experienceInfo.filter(item => item.id == id);
         this.notifier.showNotification("Experiencia borrada correctamente.", "Cerrar");
         this.ngOnInit();
       }
     );
   }
-  
+
   open(content: any) {
     this.addExperience = new Experience;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
@@ -48,7 +48,7 @@ export class ExperienceComponent implements OnInit {
   }
   editBtn(content: any, exp: Experience) {
     this.addExperience = exp;
-    if(!this.addExperience.id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
+    if (!this.addExperience.id) return this.notifier.showNotification("Lo siento, para realizar esta acción debes recargar la página.", "Cerrar");
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -56,7 +56,7 @@ export class ExperienceComponent implements OnInit {
     });
   }
   private getDismissReason(reason: any) {
-      if(reason != undefined) return this.ngOnInit();
+    if (reason != undefined) return this.ngOnInit();
   }
   save(expObject: Experience) {
     this.experienceInfo.push(expObject);
